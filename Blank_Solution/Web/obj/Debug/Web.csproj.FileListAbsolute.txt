@@ -92,3 +92,5 @@ C:\Users\Training\Source\Repos\Blank_Solution\Blank_Solution\Web\obj\Debug\Web.c
 C:\Users\Training\Source\Repos\Blank_Solution\Blank_Solution\Web\obj\Debug\Web.Migrations.Product_atdolgozasa.resources
 C:\Users\Training\Source\Repos\Blank_Solution\Blank_Solution\Web\obj\Debug\Web.Migrations.Product_atdolgozasa2.resources
 C:\Users\Training\Source\Repos\Blank_Solution\Blank_Solution\Web\obj\Debug\Web.Migrations.Product_atdolgozasa3.resources
+C:\Users\Training\Source\Repos\Blank_Solution\Blank_Solution\Web\obj\Debug\Web.Migrations.ProductTabla4.resources
+C:\Users\Training\Source\Repos\Blank_Solution\Blank_Solution\Web\obj\Debug\Web.Migrations.ProductTabla5.resources

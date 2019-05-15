@@ -12,6 +12,7 @@ namespace Web.Models
         public Guid ID { get; set; }
         public int Price { get; set; }
         private string brand;
+        private string size;
         private string name;
         private string resolution;
         private string ratio;
@@ -22,6 +23,12 @@ namespace Web.Models
         {
             get { return brand; }
             set { brand = value; }
+        }
+
+        public string Size
+        {
+            get { return size; }
+            set { size = AddCol(value); }
         }
 
         public string Name
@@ -39,7 +46,7 @@ namespace Web.Models
             set { resolution = value; }
         }
 
-        public string Ration
+        public string Ratio
         {
             get { return ratio; }
             set { ratio = value; }
@@ -48,7 +55,7 @@ namespace Web.Models
         public string Hz
         {
             get { return hz; }
-            set { hz = AddCol(value); }
+            set { hz = AddHz(value); }
         }        
 
         private string EkezetesMenetesites(string valami)
@@ -66,6 +73,13 @@ namespace Web.Models
         {
             item = item + " \"";
             StringBuilder sb = new StringBuilder(item).Replace("\" \"","\"");
+            return sb.ToString();
+        }
+
+        private string AddHz(string item)
+        {
+            item = item + " Hz";
+            StringBuilder sb = new StringBuilder(item).Replace("Hz Hz", "Hz");
             return sb.ToString();
         }
     }

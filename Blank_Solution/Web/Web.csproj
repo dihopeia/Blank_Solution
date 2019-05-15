@@ -179,7 +179,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
-    <Compile Include="DataModel\Entity_Data_ Modell.cs" />
+    <Compile Include="DataModel\Entity_Data__Modell.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -198,6 +198,14 @@
     <Compile Include="Migrations\201905151150163_Product_atdolgozasa3.cs" />
     <Compile Include="Migrations\201905151150163_Product_atdolgozasa3.Designer.cs">
       <DependentUpon>201905151150163_Product_atdolgozasa3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905151342235_ProductTabla4.cs" />
+    <Compile Include="Migrations\201905151342235_ProductTabla4.Designer.cs">
+      <DependentUpon>201905151342235_ProductTabla4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905151349584_ProductTabla5.cs" />
+    <Compile Include="Migrations\201905151349584_ProductTabla5.Designer.cs">
+      <DependentUpon>201905151349584_ProductTabla5.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -300,6 +308,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905151150163_Product_atdolgozasa3.resx">
       <DependentUpon>201905151150163_Product_atdolgozasa3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905151342235_ProductTabla4.resx">
+      <DependentUpon>201905151342235_ProductTabla4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905151349584_ProductTabla5.resx">
+      <DependentUpon>201905151349584_ProductTabla5.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

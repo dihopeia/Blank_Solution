@@ -36,6 +36,61 @@ namespace Web.Controllers
             return View(products);
         }
 
+        //GET: Product/Name/byName
+        public ActionResult Name(string name)
+        {
+            IEnumerable<Products> query = null;
+            query = db.Product.Where(p => p.Name == name).Select(x => x);
+            return View("Index", query.ToList());
+        }
+
+        //GET: Product/Resolution/byName
+        public ActionResult Resolution(string resolution)
+        {
+            IEnumerable<Products> query = null;
+            query = db.Product.Where(p => p.Resolution == resolution).Select(x => x);
+            return View("Index", query.ToList());
+        }
+
+        //GET: Product/Resolution/byName
+        public ActionResult Ratio(string ratio)
+        {
+            IEnumerable<Products> query = null;
+            query = db.Product.Where(p => p.Ratio == ratio).Select(x => x);
+            return View("Index", query.ToList());
+        }
+
+        //GET: Product/Hz/byhz
+        public ActionResult Hz(string hz)
+        {
+            IEnumerable<Products> query = null;
+            query = db.Product.Where(p => p.Hz == hz).Select(x => x);
+            return View("Index", query.ToList());
+        }
+
+        //GET: Product/Size/size
+        public ActionResult Size(string size)
+        {
+            IEnumerable<Products> query = null;
+            query = db.Product.Where(p => p.Size == size).Select(x => x);
+            return View("Index", query.ToList());
+        }
+
+        public ActionResult Brand(string brand)
+        {
+            IEnumerable<Products> query = null;
+            query = db.Product.Where(p => p.Brand == brand).Select(x => x);
+            return View("Index", query.ToList());
+        }
+
+        //GET: Product/Price/price
+        public ActionResult Price(int price)
+        {
+            IEnumerable<Products> query = null;
+            query = db.Product.Where(p => p.Price == price).Select(x => x);
+            return View("Index", query.ToList());
+        }
+
         // GET: Products/Create
         public ActionResult Create()
         {
@@ -47,7 +102,7 @@ namespace Web.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Price,Description,Brand,Name,Resolution,Ration,Hz")] Products products)
+        public ActionResult Create([Bind(Include = "ID,Price,Description,Brand,Size,Name,Resolution,Ratio,Hz")] Products products)
         {
             if (ModelState.IsValid)
             {
@@ -80,7 +135,7 @@ namespace Web.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Price,Description,Brand,Name,Resolution,Ration,Hz")] Products products)
+        public ActionResult Edit([Bind(Include = "ID,Price,Description,Brand,Size,Name,Resolution,Ratio,Hz")] Products products)
         {
             if (ModelState.IsValid)
             {
