@@ -187,6 +187,18 @@
     <Compile Include="Migrations\201905141312513_ProductBevezetese.Designer.cs">
       <DependentUpon>201905141312513_ProductBevezetese.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905151123370_Product_atdolgozasa.cs" />
+    <Compile Include="Migrations\201905151123370_Product_atdolgozasa.Designer.cs">
+      <DependentUpon>201905151123370_Product_atdolgozasa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905151145195_Product_atdolgozasa2.cs" />
+    <Compile Include="Migrations\201905151145195_Product_atdolgozasa2.Designer.cs">
+      <DependentUpon>201905151145195_Product_atdolgozasa2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905151150163_Product_atdolgozasa3.cs" />
+    <Compile Include="Migrations\201905151150163_Product_atdolgozasa3.Designer.cs">
+      <DependentUpon>201905151150163_Product_atdolgozasa3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -197,7 +209,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="AdatBazisok\Products_table.sql" />
+    <Content Include="AdatBazisok\products.sql" />
     <Content Include="AdatBazisok\users.sql" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -279,6 +291,15 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201905141312513_ProductBevezetese.resx">
       <DependentUpon>201905141312513_ProductBevezetese.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905151123370_Product_atdolgozasa.resx">
+      <DependentUpon>201905151123370_Product_atdolgozasa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905151145195_Product_atdolgozasa2.resx">
+      <DependentUpon>201905151145195_Product_atdolgozasa2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905151150163_Product_atdolgozasa3.resx">
+      <DependentUpon>201905151150163_Product_atdolgozasa3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
