@@ -23,8 +23,6 @@ namespace Web.DataModel
 
         // public virtual DbSet<MyEntity> MyEntities { get; set; }
         public virtual DbSet<Products> Product { get; set; }
-        public virtual DbSet<CustomerDetails> CustomerDetails { get; set; }
-        public virtual DbSet<DeliveryAddress> DeliveryAddresses { get; set; }
     }
 
     //public class MyEntity
