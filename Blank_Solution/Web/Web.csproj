@@ -176,9 +176,13 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BasketsController.cs" />
+    <Compile Include="Controllers\CustomerDetailsController.cs" />
+    <Compile Include="Controllers\DeliveryAddressesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\PurchaseHistoriesController.cs" />
     <Compile Include="DataModel\Entity_Data__Modell.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -207,13 +211,32 @@
     <Compile Include="Migrations\201905151349584_ProductTabla5.Designer.cs">
       <DependentUpon>201905151349584_ProductTabla5.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905171416554_CustomerDetail.cs" />
+    <Compile Include="Migrations\201905171416554_CustomerDetail.Designer.cs">
+      <DependentUpon>201905171416554_CustomerDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905171421047_DeliveryAdress.cs" />
+    <Compile Include="Migrations\201905171421047_DeliveryAdress.Designer.cs">
+      <DependentUpon>201905171421047_DeliveryAdress.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905171424156_Basket.cs" />
+    <Compile Include="Migrations\201905171424156_Basket.Designer.cs">
+      <DependentUpon>201905171424156_Basket.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905171425372_PurchaseHistory.cs" />
+    <Compile Include="Migrations\201905171425372_PurchaseHistory.Designer.cs">
+      <DependentUpon>201905171425372_PurchaseHistory.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\Basket.cs" />
+    <Compile Include="Models\CustomerDetails.cs" />
+    <Compile Include="Models\DeliveryAddress.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Photo.cs" />
     <Compile Include="Models\Products.cs" />
+    <Compile Include="Models\PurchaseHistory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -280,6 +303,26 @@
     <Content Include="Views\Products\Details.cshtml" />
     <Content Include="Views\Products\Edit.cshtml" />
     <Content Include="Views\Products\Index.cshtml" />
+    <Content Include="Views\CustomerDetails\Create.cshtml" />
+    <Content Include="Views\CustomerDetails\Delete.cshtml" />
+    <Content Include="Views\CustomerDetails\Details.cshtml" />
+    <Content Include="Views\CustomerDetails\Edit.cshtml" />
+    <Content Include="Views\CustomerDetails\Index.cshtml" />
+    <Content Include="Views\DeliveryAddresses\Create.cshtml" />
+    <Content Include="Views\DeliveryAddresses\Delete.cshtml" />
+    <Content Include="Views\DeliveryAddresses\Details.cshtml" />
+    <Content Include="Views\DeliveryAddresses\Edit.cshtml" />
+    <Content Include="Views\DeliveryAddresses\Index.cshtml" />
+    <Content Include="Views\Baskets\Create.cshtml" />
+    <Content Include="Views\Baskets\Delete.cshtml" />
+    <Content Include="Views\Baskets\Details.cshtml" />
+    <Content Include="Views\Baskets\Edit.cshtml" />
+    <Content Include="Views\Baskets\Index.cshtml" />
+    <Content Include="Views\PurchaseHistories\Create.cshtml" />
+    <Content Include="Views\PurchaseHistories\Delete.cshtml" />
+    <Content Include="Views\PurchaseHistories\Details.cshtml" />
+    <Content Include="Views\PurchaseHistories\Edit.cshtml" />
+    <Content Include="Views\PurchaseHistories\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -315,6 +358,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905151349584_ProductTabla5.resx">
       <DependentUpon>201905151349584_ProductTabla5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905171416554_CustomerDetail.resx">
+      <DependentUpon>201905171416554_CustomerDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905171421047_DeliveryAdress.resx">
+      <DependentUpon>201905171421047_DeliveryAdress.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905171424156_Basket.resx">
+      <DependentUpon>201905171424156_Basket.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905171425372_PurchaseHistory.resx">
+      <DependentUpon>201905171425372_PurchaseHistory.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
