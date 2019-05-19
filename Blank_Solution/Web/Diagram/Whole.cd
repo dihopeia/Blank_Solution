@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Web.Models.PurchaseHistory">
+    <Position X="6" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAEAAAEAAAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>Models\PurchaseHistory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Web.Models.Products">
+    <Position X="4" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAGAAAAAAQAggAAAAIAAACQAAAAkICAAAAEoAAABAAA=</HashCode>
+      <FileName>Models\Products.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Web.Models.Photo">
+    <Position X="2.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAEAAAAAAAAAAAAAAABAAAAAAA=</HashCode>
+      <FileName>Models\Photo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Web.Models.OrderList">
+    <Position X="0.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAQgAAAACAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\OrderList.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Web.Models.ExternalLoginConfirmationViewModel">
+    <Position X="5.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\AccountViewModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Web.Models.Basket">
+    <Position X="0.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAgAAAAAAAEAAAAAAAAAAEgAAAAAQ=</HashCode>
+      <FileName>Models\Basket.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Web.Models.CustomerDetails">
+    <Position X="2.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAgAAAAAAAQAAAAAAAAAAAAAAAAgAAAAg=</HashCode>
+      <FileName>Models\CustomerDetails.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Web.Models.DeliveryAddress">
+    <Position X="6" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAIAAAAAAAAAAAAAAADAAAAAAAAAAA=</HashCode>
+      <FileName>Models\DeliveryAddress.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

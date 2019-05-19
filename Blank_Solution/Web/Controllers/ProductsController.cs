@@ -22,7 +22,7 @@ namespace Web.Controllers
         }
 
         // GET: Products/Details/5
-        public ActionResult Details(Guid? id)
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
@@ -52,7 +52,7 @@ namespace Web.Controllers
             return View("Index", query.ToList());
         }
 
-        //GET: Product/Resolution/byName
+        //GET: Product/Ratio/Ratio
         public ActionResult Ratio(string ratio)
         {
             IEnumerable<Products> query = null;
@@ -106,7 +106,6 @@ namespace Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                products.ID = Guid.NewGuid();
                 db.Product.Add(products);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -116,7 +115,7 @@ namespace Web.Controllers
         }
 
         // GET: Products/Edit/5
-        public ActionResult Edit(Guid? id)
+        public ActionResult Edit(int? id)
         {
             if (id == null)
             {
@@ -147,7 +146,7 @@ namespace Web.Controllers
         }
 
         // GET: Products/Delete/5
-        public ActionResult Delete(Guid? id)
+        public ActionResult Delete(int? id)
         {
             if (id == null)
             {
@@ -164,7 +163,7 @@ namespace Web.Controllers
         // POST: Products/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(Guid id)
+        public ActionResult DeleteConfirmed(int id)
         {
             Products products = db.Product.Find(id);
             db.Product.Remove(products);

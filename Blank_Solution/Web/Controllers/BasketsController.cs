@@ -47,7 +47,7 @@ namespace Web.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CustomerID")] Basket basket)
+        public ActionResult Create([Bind(Include = "ItemId,CustomerID,Quantity,DateCreated")] Basket basket)
         {
             if (ModelState.IsValid)
             {
@@ -79,7 +79,7 @@ namespace Web.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CustomerID")] Basket basket)
+        public ActionResult Edit([Bind(Include = "ItemId,CustomerID,Quantity,DateCreated")] Basket basket)
         {
             if (ModelState.IsValid)
             {

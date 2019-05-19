@@ -181,51 +181,16 @@
     <Compile Include="Controllers\DeliveryAddressesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\OrderListsController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\PurchaseHistoriesController.cs" />
     <Compile Include="DataModel\Entity_Data__Modell.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201905141312513_ProductBevezetese.cs" />
-    <Compile Include="Migrations\201905141312513_ProductBevezetese.Designer.cs">
-      <DependentUpon>201905141312513_ProductBevezetese.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905151123370_Product_atdolgozasa.cs" />
-    <Compile Include="Migrations\201905151123370_Product_atdolgozasa.Designer.cs">
-      <DependentUpon>201905151123370_Product_atdolgozasa.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905151145195_Product_atdolgozasa2.cs" />
-    <Compile Include="Migrations\201905151145195_Product_atdolgozasa2.Designer.cs">
-      <DependentUpon>201905151145195_Product_atdolgozasa2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905151150163_Product_atdolgozasa3.cs" />
-    <Compile Include="Migrations\201905151150163_Product_atdolgozasa3.Designer.cs">
-      <DependentUpon>201905151150163_Product_atdolgozasa3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905151342235_ProductTabla4.cs" />
-    <Compile Include="Migrations\201905151342235_ProductTabla4.Designer.cs">
-      <DependentUpon>201905151342235_ProductTabla4.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905151349584_ProductTabla5.cs" />
-    <Compile Include="Migrations\201905151349584_ProductTabla5.Designer.cs">
-      <DependentUpon>201905151349584_ProductTabla5.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905171416554_CustomerDetail.cs" />
-    <Compile Include="Migrations\201905171416554_CustomerDetail.Designer.cs">
-      <DependentUpon>201905171416554_CustomerDetail.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905171421047_DeliveryAdress.cs" />
-    <Compile Include="Migrations\201905171421047_DeliveryAdress.Designer.cs">
-      <DependentUpon>201905171421047_DeliveryAdress.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905171424156_Basket.cs" />
-    <Compile Include="Migrations\201905171424156_Basket.Designer.cs">
-      <DependentUpon>201905171424156_Basket.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905171425372_PurchaseHistory.cs" />
-    <Compile Include="Migrations\201905171425372_PurchaseHistory.Designer.cs">
-      <DependentUpon>201905171425372_PurchaseHistory.cs</DependentUpon>
+    <Compile Include="Migrations\201905191505499_AddTables.cs" />
+    <Compile Include="Migrations\201905191505499_AddTables.Designer.cs">
+      <DependentUpon>201905191505499_AddTables.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -234,6 +199,7 @@
     <Compile Include="Models\DeliveryAddress.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\OrderList.cs" />
     <Compile Include="Models\Photo.cs" />
     <Compile Include="Models\Products.cs" />
     <Compile Include="Models\PurchaseHistory.cs" />
@@ -241,7 +207,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="AdatBazisok\products.sql" />
+    <Content Include="AdatBazisok\Tablak.sql" />
     <Content Include="AdatBazisok\users.sql" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -253,6 +219,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Diagram\Whole.cd" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -298,11 +265,11 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Products\Create.cshtml" />
-    <Content Include="Views\Products\Delete.cshtml" />
-    <Content Include="Views\Products\Details.cshtml" />
-    <Content Include="Views\Products\Edit.cshtml" />
-    <Content Include="Views\Products\Index.cshtml" />
+    <Content Include="Views\Baskets\Create.cshtml" />
+    <Content Include="Views\Baskets\Delete.cshtml" />
+    <Content Include="Views\Baskets\Details.cshtml" />
+    <Content Include="Views\Baskets\Edit.cshtml" />
+    <Content Include="Views\Baskets\Index.cshtml" />
     <Content Include="Views\CustomerDetails\Create.cshtml" />
     <Content Include="Views\CustomerDetails\Delete.cshtml" />
     <Content Include="Views\CustomerDetails\Details.cshtml" />
@@ -313,11 +280,16 @@
     <Content Include="Views\DeliveryAddresses\Details.cshtml" />
     <Content Include="Views\DeliveryAddresses\Edit.cshtml" />
     <Content Include="Views\DeliveryAddresses\Index.cshtml" />
-    <Content Include="Views\Baskets\Create.cshtml" />
-    <Content Include="Views\Baskets\Delete.cshtml" />
-    <Content Include="Views\Baskets\Details.cshtml" />
-    <Content Include="Views\Baskets\Edit.cshtml" />
-    <Content Include="Views\Baskets\Index.cshtml" />
+    <Content Include="Views\Products\Create.cshtml" />
+    <Content Include="Views\Products\Delete.cshtml" />
+    <Content Include="Views\Products\Details.cshtml" />
+    <Content Include="Views\Products\Edit.cshtml" />
+    <Content Include="Views\Products\Index.cshtml" />
+    <Content Include="Views\OrderLists\Create.cshtml" />
+    <Content Include="Views\OrderLists\Delete.cshtml" />
+    <Content Include="Views\OrderLists\Details.cshtml" />
+    <Content Include="Views\OrderLists\Edit.cshtml" />
+    <Content Include="Views\OrderLists\Index.cshtml" />
     <Content Include="Views\PurchaseHistories\Create.cshtml" />
     <Content Include="Views\PurchaseHistories\Delete.cshtml" />
     <Content Include="Views\PurchaseHistories\Details.cshtml" />
@@ -341,35 +313,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201905141312513_ProductBevezetese.resx">
-      <DependentUpon>201905141312513_ProductBevezetese.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905151123370_Product_atdolgozasa.resx">
-      <DependentUpon>201905151123370_Product_atdolgozasa.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905151145195_Product_atdolgozasa2.resx">
-      <DependentUpon>201905151145195_Product_atdolgozasa2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905151150163_Product_atdolgozasa3.resx">
-      <DependentUpon>201905151150163_Product_atdolgozasa3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905151342235_ProductTabla4.resx">
-      <DependentUpon>201905151342235_ProductTabla4.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905151349584_ProductTabla5.resx">
-      <DependentUpon>201905151349584_ProductTabla5.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905171416554_CustomerDetail.resx">
-      <DependentUpon>201905171416554_CustomerDetail.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905171421047_DeliveryAdress.resx">
-      <DependentUpon>201905171421047_DeliveryAdress.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905171424156_Basket.resx">
-      <DependentUpon>201905171424156_Basket.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905171425372_PurchaseHistory.resx">
-      <DependentUpon>201905171425372_PurchaseHistory.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201905191505499_AddTables.resx">
+      <DependentUpon>201905191505499_AddTables.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

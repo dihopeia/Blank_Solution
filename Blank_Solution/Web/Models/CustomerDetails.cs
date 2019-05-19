@@ -18,6 +18,9 @@ namespace Web.Models
         public string LastName { get; set; }
 
         [Required]
+        public string EmailAddress { get; set; }
+
+        [Required]
         public string PhoneNumber { get; set; }
     }
 }

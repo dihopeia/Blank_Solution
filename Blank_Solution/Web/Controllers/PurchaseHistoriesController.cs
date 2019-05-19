@@ -47,7 +47,7 @@ namespace Web.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CustomerID,FirstName,LastName,EmailAddress,PhoneNumber,City,ZipCode,Address,ProductID,Count,Price,Status,PurchaseTime")] PurchaseHistory purchaseHistory)
+        public ActionResult Create([Bind(Include = "CustomerID")] PurchaseHistory purchaseHistory)
         {
             if (ModelState.IsValid)
             {
@@ -79,7 +79,7 @@ namespace Web.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CustomerID,FirstName,LastName,EmailAddress,PhoneNumber,City,ZipCode,Address,ProductID,Count,Price,Status,PurchaseTime")] PurchaseHistory purchaseHistory)
+        public ActionResult Edit([Bind(Include = "CustomerID")] PurchaseHistory purchaseHistory)
         {
             if (ModelState.IsValid)
             {

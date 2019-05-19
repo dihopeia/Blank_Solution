@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -9,7 +10,8 @@ namespace Web.Models
 {
     public class Products
     {
-        public Guid ID { get; set; }
+        [Key]
+        public int ID { get; set; }
         public int Price { get; set; }
         private string brand;
         private string size;

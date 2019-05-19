@@ -2,8 +2,10 @@
   "ExpandedNodes": [
     "",
     "\\Blank_Solution",
-    "\\Blank_Solution\\Web\\Controllers"
+    "\\Blank_Solution\\Web",
+    "\\Blank_Solution\\Web\\DataModel",
+    "\\Blank_Solution\\Web\\Models"
   ],
-  "SelectedNode": "\\Blank_Solution\\Blank_Solution.sln",
+  "SelectedNode": "\\Blank_Solution\\Web\\Models\\AccountViewModels.cs",
   "PreviewInSolutionExplorer": false
 }

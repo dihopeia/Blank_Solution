@@ -10,8 +10,14 @@ namespace Web.Models
     public class Basket
     {
         [Key]
+        public int ItemId { get; set; }
+
         public int CustomerID { get; set; }
 
-        public List<Products> Products { get; set; }
+        public int Quantity { get; set; }
+
+        public System.DateTime DateCreated { get; set; }
+
+        public virtual Products Products { get; set; }
     }
 }
