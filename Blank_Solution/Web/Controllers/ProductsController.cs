@@ -179,5 +179,41 @@ namespace Web.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public ActionResult AddToBasket(int? id)
+        {
+            int currentUser = 1;
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Products product = db.Product.Find(id);
+            Basket entryToAddToBasket = new Basket(currentUser, product.ID, product);
+            if (product == null)
+            {
+                return HttpNotFound();
+            }
+            //TODo: if benne van már a termék(SessionID && ProductID && OrderTime==null alapján) akkor Quantity++
+            var query = (from a in db.Basket
+                         where a.CustomerID == currentUser && a.ItemId == product.ID
+                         select a).FirstOrDefault();
+
+            if (query != null)
+            {
+                var result = db.Basket.SingleOrDefault(b => b.CustomerID == currentUser && b.ItemId == product.ID);
+                result.Quantity++;
+            }
+
+
+            else
+            {
+                entryToAddToBasket.Quantity = 1;
+                db.Basket.Add(entryToAddToBasket);
+
+            }
+            db.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
     }
 }

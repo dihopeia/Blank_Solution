@@ -89,4 +89,3 @@ C:\Users\Training\Source\Repos\Blank_Solution\Blank_Solution\Web\obj\Debug\Web.p
 C:\Users\Training\Source\Repos\Blank_Solution\Blank_Solution\Web\obj\Debug\Web.Migrations.AddTables.resources
 C:\Users\Training\Source\Repos\Blank_Solution\Blank_Solution\Web\obj\Debug\Web.csproj.GenerateResource.cache
 C:\Users\Training\Source\Repos\Blank_Solution\Blank_Solution\Web\obj\Debug\Web.Migrations.ModifyTables.resources
-C:\Users\Training\Source\Repos\Blank_Solution\Blank_Solution\Web\obj\Debug\Web.csprojAssemblyReference.cache
