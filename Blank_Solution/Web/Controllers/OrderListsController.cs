@@ -47,7 +47,7 @@ namespace Web.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Status")] OrderList orderList)
+        public ActionResult Create([Bind(Include = "ID,DateCreated,Status")] OrderList orderList)
         {
             if (ModelState.IsValid)
             {
@@ -79,7 +79,7 @@ namespace Web.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Status")] OrderList orderList)
+        public ActionResult Edit([Bind(Include = "ID,DateCreated,Status")] OrderList orderList)
         {
             if (ModelState.IsValid)
             {

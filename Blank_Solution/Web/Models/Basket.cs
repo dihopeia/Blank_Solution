@@ -16,8 +16,6 @@ namespace Web.Models
 
         public int Quantity { get; set; }
 
-        public System.DateTime DateCreated { get; set; }
-
         public virtual Products Products { get; set; }
     }
 }

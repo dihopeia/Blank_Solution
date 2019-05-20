@@ -192,6 +192,10 @@
     <Compile Include="Migrations\201905191505499_AddTables.Designer.cs">
       <DependentUpon>201905191505499_AddTables.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905200745476_ModifyTables.cs" />
+    <Compile Include="Migrations\201905200745476_ModifyTables.Designer.cs">
+      <DependentUpon>201905200745476_ModifyTables.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Basket.cs" />
@@ -265,16 +269,6 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Baskets\Create.cshtml" />
-    <Content Include="Views\Baskets\Delete.cshtml" />
-    <Content Include="Views\Baskets\Details.cshtml" />
-    <Content Include="Views\Baskets\Edit.cshtml" />
-    <Content Include="Views\Baskets\Index.cshtml" />
-    <Content Include="Views\CustomerDetails\Create.cshtml" />
-    <Content Include="Views\CustomerDetails\Delete.cshtml" />
-    <Content Include="Views\CustomerDetails\Details.cshtml" />
-    <Content Include="Views\CustomerDetails\Edit.cshtml" />
-    <Content Include="Views\CustomerDetails\Index.cshtml" />
     <Content Include="Views\DeliveryAddresses\Create.cshtml" />
     <Content Include="Views\DeliveryAddresses\Delete.cshtml" />
     <Content Include="Views\DeliveryAddresses\Details.cshtml" />
@@ -285,6 +279,11 @@
     <Content Include="Views\Products\Details.cshtml" />
     <Content Include="Views\Products\Edit.cshtml" />
     <Content Include="Views\Products\Index.cshtml" />
+    <Content Include="Views\CustomerDetails\Create.cshtml" />
+    <Content Include="Views\CustomerDetails\Delete.cshtml" />
+    <Content Include="Views\CustomerDetails\Details.cshtml" />
+    <Content Include="Views\CustomerDetails\Edit.cshtml" />
+    <Content Include="Views\CustomerDetails\Index.cshtml" />
     <Content Include="Views\OrderLists\Create.cshtml" />
     <Content Include="Views\OrderLists\Delete.cshtml" />
     <Content Include="Views\OrderLists\Details.cshtml" />
@@ -295,6 +294,11 @@
     <Content Include="Views\PurchaseHistories\Details.cshtml" />
     <Content Include="Views\PurchaseHistories\Edit.cshtml" />
     <Content Include="Views\PurchaseHistories\Index.cshtml" />
+    <Content Include="Views\Baskets\Create.cshtml" />
+    <Content Include="Views\Baskets\Delete.cshtml" />
+    <Content Include="Views\Baskets\Details.cshtml" />
+    <Content Include="Views\Baskets\Edit.cshtml" />
+    <Content Include="Views\Baskets\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -315,6 +319,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201905191505499_AddTables.resx">
       <DependentUpon>201905191505499_AddTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905200745476_ModifyTables.resx">
+      <DependentUpon>201905200745476_ModifyTables.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
