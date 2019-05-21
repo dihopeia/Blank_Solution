@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Web.SessionState;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -182,7 +183,21 @@ namespace Web.Controllers
 
         public ActionResult AddToBasket(int? id)
         {
-            int currentUser = 1;
+            string sessionKey = HttpContext.Session.SessionID;
+
+            string isSessionIdExist= (from x in db.Anonym
+                                   where x.SessionID == sessionKey
+                                   select x.SessionID).FirstOrDefault();
+
+            if(isSessionIdExist!= sessionKey)
+            {
+                db.Anonym.Add(new Anonym(sessionKey));
+            }
+            db.SaveChanges();
+
+            int currentUser = (from x in db.Anonym
+                               where x.SessionID == sessionKey
+                               select x.ID).FirstOrDefault();
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -207,6 +222,7 @@ namespace Web.Controllers
                     entryToAddToBasket.Quantity = 1;
                     db.Basket.Add(entryToAddToBasket);
             }
+
             db.SaveChanges();
 
             return RedirectToAction("Index");

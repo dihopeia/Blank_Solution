@@ -44,7 +44,9 @@
             @Html.DisplayFor(modelItem => item.Products.Price)
         </td>
         <td>
+            @Html.ActionLink("+", "ModifyQuantity", new { id = item.ItemId, deltaQuantity = 1 })          
             @Html.DisplayFor(modelItem => item.Quantity)
+            @Html.ActionLink("-", "ModifyQuantity", new { id = item.ItemId, deltaQuantity = -1 })
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id = item.ItemId }) |

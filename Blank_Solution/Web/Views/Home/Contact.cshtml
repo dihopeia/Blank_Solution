@@ -1,9 +1,10 @@
 ﻿@{
     ViewBag.Title = "Contact";
-    Session["dummy"] = "dummy";
+    Session["dummy"] = "kolbász";
 }
 
 <h1>@Session.SessionID </h1>
+<h1>@Session["dummy"]</h1>
 <h2>@ViewBag.Title.</h2>
 <h3>@ViewBag.Message</h3>
 

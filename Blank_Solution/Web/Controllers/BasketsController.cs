@@ -36,6 +36,23 @@ namespace Web.Controllers
             return View(basket);
         }
 
+        //Quanitity plus minus
+        public ActionResult ModifyQuantity(int? id, int deltaQuantity)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Basket basket = db.Basket.Find(id);
+            if (basket == null)
+            {
+                return HttpNotFound();
+            }
+            basket.Quantity += deltaQuantity;
+            db.SaveChanges();
+            return RedirectToAction("Index", db.Basket.ToList());
+        }
+
         // GET: Baskets/Create
         public ActionResult Create()
         {

@@ -196,8 +196,13 @@
     <Compile Include="Migrations\201905200745476_ModifyTables.Designer.cs">
       <DependentUpon>201905200745476_ModifyTables.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905211307177_AnonymTable.cs" />
+    <Compile Include="Migrations\201905211307177_AnonymTable.Designer.cs">
+      <DependentUpon>201905211307177_AnonymTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Anonym.cs" />
     <Compile Include="Models\Basket.cs" />
     <Compile Include="Models\CustomerDetails.cs" />
     <Compile Include="Models\DeliveryAddress.cs" />
@@ -337,6 +342,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905200745476_ModifyTables.resx">
       <DependentUpon>201905200745476_ModifyTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905211307177_AnonymTable.resx">
+      <DependentUpon>201905211307177_AnonymTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
