@@ -68,7 +68,7 @@ namespace Web.Models
             {
                 sb.Replace(ekezetek[i].ToString(),"");          
             }
-            return sb.ToString();
+            return sb.ToString().ToUpper();
         }
 
         private string AddCol(string item)
