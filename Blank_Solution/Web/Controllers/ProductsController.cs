@@ -188,28 +188,24 @@ namespace Web.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Products product = db.Product.Find(id);
-            Basket entryToAddToBasket = new Basket(currentUser, product.ID, product);
+            Basket entryToAddToBasket = new Basket(product.ID, currentUser, product);
             if (product == null)
             {
                 return HttpNotFound();
             }
             //TODo: if benne van már a termék(SessionID && ProductID && OrderTime==null alapján) akkor Quantity++
             var query = (from a in db.Basket
-                         where a.CustomerID == currentUser && a.ItemId == product.ID
+                         where a.CustomerID == currentUser && a.Products.ID == product.ID
                          select a).FirstOrDefault();
 
             if (query != null)
             {
-                var result = db.Basket.SingleOrDefault(b => b.CustomerID == currentUser && b.ItemId == product.ID);
-                result.Quantity++;
+                var result = db.Basket.SingleOrDefault(b => b.CustomerID == currentUser && b.Products.ID == product.ID);
             }
-
-
             else
             {
-                entryToAddToBasket.Quantity = 1;
-                db.Basket.Add(entryToAddToBasket);
-
+                    entryToAddToBasket.Quantity = 1;
+                    db.Basket.Add(entryToAddToBasket);
             }
             db.SaveChanges();
 
