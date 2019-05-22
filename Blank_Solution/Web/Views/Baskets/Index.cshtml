@@ -1,14 +1,12 @@
 ﻿@model IEnumerable<Web.Models.Basket>
 
 @{
-    ViewBag.Title = "Basket";
+    ViewBag.Title = "Cart";
 }
 
-<h2 style="margin-top: 3%">Basket</h2>
+<h2 style="margin-top: 3%">Cart</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+
 <table class="table">
     <tr>
         <th>
@@ -41,7 +39,7 @@
             @Html.DisplayFor(modelItem => item.Products.Name)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Products.Price)
+            @Html.DisplayFor(modelItem => item.Products.Price) Ft
         </td>
         <td>
             @Html.ActionLink("+", "ModifyQuantity", new { id = item.ItemId, deltaQuantity = 1 })          
@@ -49,7 +47,7 @@
             @Html.ActionLink("-", "ModifyQuantity", new { id = item.ItemId, deltaQuantity = -1 })
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.ItemId }) |
+           
             @Html.ActionLink("Details", "Details", new { id = item.ItemId }) |
             @Html.ActionLink("Delete", "Delete", new { id = item.ItemId })
         </td>
