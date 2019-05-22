@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<Web.Models.Products>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Products";
 }
 
-<h2>Index</h2>
+<h2 style="margin-top: 3%">Products</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -14,9 +14,7 @@
         <th>
             @Html.DisplayNameFor(model => model.Price)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
+       
         <th>
             @Html.DisplayNameFor(model => model.Brand)
         </th>
@@ -43,9 +41,7 @@
         <td>
             @Html.DisplayFor(modelItem => item.Price)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
+        
         <td>
             @Html.DisplayFor(modelItem => item.Brand)
         </td>
