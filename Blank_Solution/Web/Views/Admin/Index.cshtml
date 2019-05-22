@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewBag.Title = "Admin";
+}
+
+<h2 style="margin-top: 3%">Admin</h2>
+
+<ul>
+    <li>@Html.ActionLink("EditProducts", "AdminProducts", "Admin", new { area = "" }, new { @class = "nav-link" })</li>
+    <li>@Html.ActionLink("EditBaskets", "AdminBaskets", "Admin", new { area = "" }, new { @class = "nav-link" })</li>
+    <li>@Html.ActionLink("EditOrders", "AdminOrders", "Admin", new { area = "" }, new { @class = "nav-link" })</li>
+    <li>@Html.ActionLink("PurchaseHistory", "AdminHistory", "Admin", new { area = "" }, new { @class = "nav-link" })</li>
+</ul>

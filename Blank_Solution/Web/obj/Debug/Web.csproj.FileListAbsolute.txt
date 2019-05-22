@@ -267,7 +267,6 @@ C:\Users\Dihopeia\Source\Repos\Blank_Solution\Blank_Solution\Web\bin\Microsoft.O
 C:\Users\Dihopeia\Source\Repos\Blank_Solution\Blank_Solution\Web\bin\System.Diagnostics.DiagnosticSource.xml
 C:\Users\Dihopeia\Source\Repos\Blank_Solution\Blank_Solution\Web\bin\Microsoft.AspNet.TelemetryCorrelation.xml
 C:\Users\Dihopeia\Source\Repos\Blank_Solution\Blank_Solution\Web\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\Dihopeia\Source\Repos\Blank_Solution\Blank_Solution\Web\obj\Debug\Web.csprojAssemblyReference.cache
 C:\Users\Dihopeia\Source\Repos\Blank_Solution\Blank_Solution\Web\obj\Debug\Web.Migrations.AddTables.resources
 C:\Users\Dihopeia\Source\Repos\Blank_Solution\Blank_Solution\Web\obj\Debug\Web.Migrations.ModifyTables.resources
 C:\Users\Dihopeia\Source\Repos\Blank_Solution\Blank_Solution\Web\obj\Debug\Web.Migrations.AnonymTable.resources

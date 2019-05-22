@@ -71,60 +71,6 @@ namespace Web.Controllers
             }
         }
 
-        // GET: Baskets/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Baskets/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ItemId,CustomerID,Quantity")] Basket basket)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Basket.Add(basket);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            return View(basket);
-        }
-
-        // GET: Baskets/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Basket basket = db.Basket.Find(id);
-            if (basket == null)
-            {
-                return HttpNotFound();
-            }
-            return View(basket);
-        }
-
-        // POST: Baskets/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ItemId,CustomerID,Quantity")] Basket basket)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(basket).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(basket);
-        }
-
         // GET: Baskets/Delete/5
         public ActionResult Delete(int? id)
         {
