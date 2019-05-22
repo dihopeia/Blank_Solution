@@ -18,7 +18,16 @@ namespace Web.Controllers
         // GET: Baskets
         public ActionResult Index()
         {
-            return View(db.Basket.ToList());
+            string sessionKey = HttpContext.Session.SessionID;
+            var getCustomerID = (from x in db.Anonym
+                        where x.SessionID == sessionKey
+                        select x.ID).FirstOrDefault();
+
+            var query = from x in db.Basket
+                        where x.CustomerID == getCustomerID
+                        select x;
+
+            return View(query.ToList());
         }
 
         // GET: Baskets/Details/5
