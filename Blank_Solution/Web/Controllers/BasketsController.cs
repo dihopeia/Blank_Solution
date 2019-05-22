@@ -48,9 +48,18 @@ namespace Web.Controllers
             {
                 return HttpNotFound();
             }
-            basket.Quantity += deltaQuantity;
-            db.SaveChanges();
-            return RedirectToAction("Index", db.Basket.ToList());
+            if (basket.Quantity <= 1 && deltaQuantity == -1)
+            {
+                db.Basket.Remove(basket);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                basket.Quantity += deltaQuantity;
+                db.SaveChanges();
+                return RedirectToAction("Index", db.Basket.ToList());
+            }
         }
 
         // GET: Baskets/Create
