@@ -2,10 +2,10 @@
   "ExpandedNodes": [
     "",
     "\\Blank_Solution",
-    "\\Blank_Solution\\Web\\DataModel",
-    "\\Blank_Solution\\Web\\Views",
-    "\\Blank_Solution\\Web\\Views\\Home"
+    "\\Blank_Solution\\Web",
+    "\\Blank_Solution\\Web\\Controllers",
+    "\\Blank_Solution\\Web\\DataModel"
   ],
-  "SelectedNode": "\\Blank_Solution\\Blank_Solution.sln",
+  "SelectedNode": "\\Blank_Solution\\Web\\Controllers\\ProductsController.cs",
   "PreviewInSolutionExplorer": false
 }

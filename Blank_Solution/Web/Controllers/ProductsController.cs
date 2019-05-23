@@ -186,21 +186,46 @@ namespace Web.Controllers
 
         public ActionResult AddToBasket(int? id)
         {
+            int currentUser = 0;
             string sessionKey = HttpContext.Session.SessionID;
+            string CurrentUserIdentity = System.Web.HttpContext.Current.User.Identity.Name;
 
-            string isSessionIdExist= (from x in db.Anonym
-                                   where x.SessionID == sessionKey
-                                   select x.SessionID).FirstOrDefault();
+            string isSessionIdExist = (from x in db.Anonym
+                                       where x.SessionID == sessionKey
+                                       select x.SessionID).FirstOrDefault();
 
-            if(isSessionIdExist!= sessionKey)
+            string isUsernNameExist = (from une in new ApplicationDbContext().Users
+                                       where une.UserName == CurrentUserIdentity
+                                       select une.UserName).SingleOrDefault();
+
+            if (CurrentUserIdentity == isUsernNameExist)
             {
-                db.Anonym.Add(new Anonym(sessionKey));
-            }
-            db.SaveChanges();
+                string isUserExist = (from x in db.Anonym
+                                      where x.SessionID == CurrentUserIdentity
+                                      select x.SessionID).FirstOrDefault();
+                if (isUserExist != CurrentUserIdentity)
+                {
+                    db.Anonym.Add(new Anonym(CurrentUserIdentity));
+                }
+                db.SaveChanges();
 
-            int currentUser = (from x in db.Anonym
+                currentUser = (from x in db.Anonym
+                               where x.SessionID == CurrentUserIdentity
+                               select x.ID).FirstOrDefault();
+            }
+            else
+            {
+
+                if (isSessionIdExist != sessionKey)
+                {
+                    db.Anonym.Add(new Anonym(sessionKey));
+                }
+                db.SaveChanges();
+
+                currentUser = (from x in db.Anonym
                                where x.SessionID == sessionKey
                                select x.ID).FirstOrDefault();
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -222,13 +247,10 @@ namespace Web.Controllers
             }
             else
             {
-                    entryToAddToBasket.Quantity = 1;
-                    db.Basket.Add(entryToAddToBasket);
+                entryToAddToBasket.Quantity = 1;
+                db.Basket.Add(entryToAddToBasket);
             }
-
-            db.SaveChanges();
-
-            return RedirectToAction("Index");
+            db.SaveChanges(); return RedirectToAction("Index");
         }
     }
 }
