@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Cart";
+    int basketSum = 0;
 }
 
 <h2 style="margin-top: 3%">Cart</h2>
@@ -27,7 +28,7 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+    @foreach (var item in Model) {
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.CustomerID)
@@ -39,19 +40,26 @@
             @Html.DisplayFor(modelItem => item.Products.Name)
         </td>
         <td>
-            $@Html.DisplayFor(modelItem => item.Products.Price) 
+            $@Html.DisplayFor(modelItem => item.Products.Price)
         </td>
         <td>
-            @Html.ActionLink("+", "ModifyQuantity", new { id = item.ItemId, deltaQuantity = 1 })          
+            @Html.ActionLink("+", "ModifyQuantity", new { id = item.ItemId, deltaQuantity = 1 })
             @Html.DisplayFor(modelItem => item.Quantity)
             @Html.ActionLink("-", "ModifyQuantity", new { id = item.ItemId, deltaQuantity = -1 })
         </td>
         <td>
-           
+
             @Html.ActionLink("Details", "Details", new { id = item.ItemId }) |
             @Html.ActionLink("Delete", "Delete", new { id = item.ItemId })
         </td>
     </tr>
-}
+    basketSum += item.Products.Price * item.Quantity;
+    }
 
 </table>
+<div style="float:left">
+    Your Cart Price: $@basketSum
+</div>
+<div style="float:right">
+    @Html.ActionLink("Delete Cart", "DeleteAll")
+</div>

@@ -44,6 +44,25 @@ namespace Web.Controllers
             }
             return View(basket);
         }
+        //Deleting Cart
+       public ActionResult DeleteAll()
+       {
+           string sessionKey = HttpContext.Session.SessionID;
+           var getCustomerID = (from x in db.Anonym
+                                where x.SessionID == sessionKey
+                                select x.ID).FirstOrDefault();
+
+           var query = from x in db.Basket
+                       where x.CustomerID == getCustomerID
+                       select x;
+           var basketContent = query.ToList();
+           for (int i = 0; i < basketContent.Count; i++)
+           {
+               db.Basket.Remove(basketContent[i]);
+           }
+           db.SaveChanges();
+           return RedirectToAction("Index");
+       }
 
         //Quanitity plus minus
         public ActionResult ModifyQuantity(int? id, int deltaQuantity)
