@@ -15,5 +15,10 @@ namespace Web.Models
         public virtual DeliveryAddress DeliveryAddress { get; set; }
         public System.DateTime DateCreated { get; set; }
         public string Status { get; set; }
-    }
+
+        public OrderList()
+        {
+
+        }
+    } 
 }

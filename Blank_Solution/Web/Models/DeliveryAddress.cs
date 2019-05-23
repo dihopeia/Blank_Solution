@@ -12,6 +12,9 @@ namespace Web.Models
         public int ID { get; set; }
 
         [Required]
+        public int CustomerID { get; set; }
+
+        [Required]
         public string City { get; set; }
 
         [Required]

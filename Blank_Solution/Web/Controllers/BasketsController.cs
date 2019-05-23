@@ -140,5 +140,10 @@ namespace Web.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public ActionResult Buy()
+        {
+            return RedirectToAction("Create","CustomerDetails");
+        }
     }
 }

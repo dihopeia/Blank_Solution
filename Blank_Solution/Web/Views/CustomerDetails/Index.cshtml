@@ -1,16 +1,19 @@
 ﻿@model IEnumerable<Web.Models.CustomerDetails>
 
 @{
-    ViewBag.Title = "Customer Details";
+    ViewBag.Title = "Index";
 }
 
-<h2 style="margin-top: 3%">Customer Details</h2>
+<h2>Index</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CustomerID)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.FirstName)
         </th>
@@ -28,6 +31,9 @@
 
 @foreach (var item in Model) {
     <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CustomerID)
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.FirstName)
         </td>

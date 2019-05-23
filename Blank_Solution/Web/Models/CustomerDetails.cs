@@ -12,6 +12,9 @@ namespace Web.Models
         public int ID { get; set; }
 
         [Required]
+        public int CustomerID { get; set; }
+
+        [Required]
         public string FirstName { get; set; }
 
         [Required]
@@ -22,5 +25,18 @@ namespace Web.Models
 
         [Required]
         public string PhoneNumber { get; set; }
+
+        public CustomerDetails()
+        {
+
+        }
+
+        public CustomerDetails(string FirstName, string LastName, string EmailAddress, string PhoneNumber)
+        {
+            this.FirstName = FirstName;
+            this.LastName = LastName;
+            this.EmailAddress = EmailAddress;
+            this.PhoneNumber = PhoneNumber;
+        }
     }
 }

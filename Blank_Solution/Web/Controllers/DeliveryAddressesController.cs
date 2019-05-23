@@ -47,13 +47,35 @@ namespace Web.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,City,ZipCode,Address")] DeliveryAddress deliveryAddress)
+        public ActionResult Create([Bind(Include = "ID,CustomerID,City,ZipCode,Address")] DeliveryAddress deliveryAddress)
         {
             if (ModelState.IsValid)
             {
+                int getCustomerID = 0;
+                string sessionKey = HttpContext.Session.SessionID;
+                string CurrentUserIdentity = System.Web.HttpContext.Current.User.Identity.Name;
+
+                string isUsernNameExist = (from une in new ApplicationDbContext().Users
+                                           where une.UserName == CurrentUserIdentity
+                                           select une.UserName).SingleOrDefault();
+
+                if (CurrentUserIdentity == isUsernNameExist)
+                {
+                    getCustomerID = (from x in db.Anonym
+                                     where x.SessionID == CurrentUserIdentity
+                                     select x.ID).FirstOrDefault();
+                }
+                else
+                {
+                    getCustomerID = (from x in db.Anonym
+                                     where x.SessionID == sessionKey
+                                     select x.ID).FirstOrDefault();
+                }
+
+                deliveryAddress.CustomerID = getCustomerID;
                 db.DeliveryAddress.Add(deliveryAddress);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "OrderLists");
             }
 
             return View(deliveryAddress);
@@ -79,7 +101,7 @@ namespace Web.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,City,ZipCode,Address")] DeliveryAddress deliveryAddress)
+        public ActionResult Edit([Bind(Include = "ID,CustomerID,City,ZipCode,Address")] DeliveryAddress deliveryAddress)
         {
             if (ModelState.IsValid)
             {
