@@ -39,7 +39,7 @@
             @Html.DisplayFor(modelItem => item.Products.Name)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Products.Price) Ft
+            $@Html.DisplayFor(modelItem => item.Products.Price) 
         </td>
         <td>
             @Html.ActionLink("+", "ModifyQuantity", new { id = item.ItemId, deltaQuantity = 1 })          
