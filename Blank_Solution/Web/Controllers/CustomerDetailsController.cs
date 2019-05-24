@@ -18,7 +18,30 @@ namespace Web.Controllers
         // GET: CustomerDetails
         public ActionResult Index()
         {
-            return View(db.CustomerDetail.ToList());
+            int getCustomerID = 0;
+            string sessionKey = HttpContext.Session.SessionID;
+            string CurrentUserIdentity = System.Web.HttpContext.Current.User.Identity.Name;
+
+            string isUsernNameExist = (from une in new ApplicationDbContext().Users
+                                       where une.UserName == CurrentUserIdentity
+                                       select une.UserName).SingleOrDefault();
+
+            if (CurrentUserIdentity == isUsernNameExist)
+            {
+                getCustomerID = (from x in db.Anonym
+                                 where x.SessionID == CurrentUserIdentity
+                                 select x.ID).FirstOrDefault();
+            }
+            else
+            {
+                getCustomerID = (from x in db.Anonym
+                                 where x.SessionID == sessionKey
+                                 select x.ID).FirstOrDefault();
+            }
+            var query = from x in db.CustomerDetail
+                        where x.CustomerID == getCustomerID
+                        select x;
+            return View(query.ToList());
         }
 
         // GET: CustomerDetails/Details/5
@@ -39,6 +62,54 @@ namespace Web.Controllers
         // GET: CustomerDetails/Create
         public ActionResult Create()
         {
+            int getCustomerID = 0;
+            string sessionKey = HttpContext.Session.SessionID;
+            string CurrentUserIdentity = System.Web.HttpContext.Current.User.Identity.Name;
+
+            string isUsernNameExist = (from une in new ApplicationDbContext().Users
+                                       where une.UserName == CurrentUserIdentity
+                                       select une.UserName).SingleOrDefault();
+
+            if (CurrentUserIdentity == isUsernNameExist)
+            {
+                getCustomerID = (from x in db.Anonym
+                                 where x.SessionID == CurrentUserIdentity
+                                 select x.ID).FirstOrDefault();
+            }
+            else
+            {
+                getCustomerID = (from x in db.Anonym
+                                 where x.SessionID == sessionKey
+                                 select x.ID).FirstOrDefault();
+            }
+
+            var GetAddress = (from validate in db.DeliveryAddress
+                         where validate.ID == getCustomerID
+                         select validate).SingleOrDefault();
+            var GetDetails = (from validate in db.CustomerDetail
+                         where validate.CustomerID == getCustomerID
+                         select validate).SingleOrDefault();
+            if (GetAddress != null && GetAddress != null)
+            {
+                var query = from valmi in db.Basket
+                            where valmi.CustomerID == getCustomerID
+                            select valmi.ItemId;
+
+                Basket CurrentCustomerBaskets = new Basket();
+
+                CustomerDetails CurrentCD = (from c in db.CustomerDetail
+                                                where c.CustomerID == getCustomerID
+                                                select c).SingleOrDefault();
+                DeliveryAddress CurrentDA = (from d in db.DeliveryAddress
+                                                where d.CustomerID == getCustomerID
+                                                select d).SingleOrDefault();
+
+                DateTime localDate = DateTime.Now;
+                OrderList CreateItem = new OrderList(CurrentCustomerBaskets, CurrentCD, CurrentDA, DateTime.Now, "Ordered");
+                db.OrderList.Add(CreateItem);
+                db.SaveChanges();
+                return RedirectToAction("Index", "OrderLists");
+            }
             return View();
         }
 
@@ -71,8 +142,16 @@ namespace Web.Controllers
                                      where x.SessionID == sessionKey
                                      select x.ID).FirstOrDefault();
                 }
-
                 customerDetails.CustomerID = getCustomerID;
+
+                var query = (from a in db.DeliveryAddress
+                             where a.CustomerID == getCustomerID
+                             select a).FirstOrDefault();
+                if (query != null)
+                {
+                    return RedirectToAction("Create", "DeliveryAddresses");
+                }
+
                 db.CustomerDetail.Add(customerDetails);
                 db.SaveChanges();
                 return RedirectToAction("Create", "DeliveryAddresses");

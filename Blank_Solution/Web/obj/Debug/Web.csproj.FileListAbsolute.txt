@@ -245,10 +245,6 @@ C:\Users\Dihopeia\Source\Repos\Blank_Solution\Blank_Solution\Web\bin\Microsoft.O
 C:\Users\Dihopeia\Source\Repos\Blank_Solution\Blank_Solution\Web\bin\System.Diagnostics.DiagnosticSource.xml
 C:\Users\Dihopeia\Source\Repos\Blank_Solution\Blank_Solution\Web\bin\Microsoft.AspNet.TelemetryCorrelation.xml
 C:\Users\Dihopeia\Source\Repos\Blank_Solution\Blank_Solution\Web\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\Dihopeia\Source\Repos\Blank_Solution\Blank_Solution\Web\obj\Debug\Web.Migrations.AddTables.resources
-C:\Users\Dihopeia\Source\Repos\Blank_Solution\Blank_Solution\Web\obj\Debug\Web.Migrations.ModifyTables.resources
-C:\Users\Dihopeia\Source\Repos\Blank_Solution\Blank_Solution\Web\obj\Debug\Web.Migrations.AnonymTable.resources
-C:\Users\Dihopeia\Source\Repos\Blank_Solution\Blank_Solution\Web\obj\Debug\Web.csproj.GenerateResource.cache
 C:\Users\Dihopeia\Source\Repos\Blank_Solution\Blank_Solution\Web\obj\Debug\Web.csproj.CoreCompileInputs.cache
 C:\Users\Dihopeia\Source\Repos\Blank_Solution\Blank_Solution\Web\obj\Debug\Web.csproj.CopyComplete
 C:\Users\Dihopeia\Source\Repos\Blank_Solution\Blank_Solution\Web\obj\Debug\Web.dll
@@ -276,3 +272,6 @@ C:\Users\Training\Source\Repos\Blank_Solution\Blank_Solution\Web\bin\roslyn\VBCS
 C:\Users\Training\Source\Repos\Blank_Solution\Blank_Solution\Web\bin\roslyn\VBCSCompiler.exe.config
 C:\Users\Training\Source\Repos\Blank_Solution\Blank_Solution\Web\obj\Debug\Web.Migrations.ModifyCustomerDetiailsAndDeliveryAdd.resources
 C:\Users\Training\Source\Repos\Blank_Solution\Blank_Solution\Web\obj\Debug\Web.csprojAssemblyReference.cache
+C:\Users\Dihopeia\Source\Repos\Blank_Solution\Blank_Solution\Web\obj\Debug\Web.csprojAssemblyReference.cache
+C:\Users\Dihopeia\Source\Repos\Blank_Solution\Blank_Solution\Web\obj\Debug\Web.Migrations.Everything.resources
+C:\Users\Dihopeia\Source\Repos\Blank_Solution\Blank_Solution\Web\obj\Debug\Web.csproj.GenerateResource.cache

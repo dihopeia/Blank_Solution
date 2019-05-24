@@ -3,10 +3,19 @@ namespace Web.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class AddTables : DbMigration
+    public partial class Everything : DbMigration
     {
         public override void Up()
         {
+            CreateTable(
+                "dbo.Anonyms",
+                c => new
+                    {
+                        ID = c.Int(nullable: false, identity: true),
+                        SessionID = c.String(),
+                    })
+                .PrimaryKey(t => t.ID);
+            
             CreateTable(
                 "dbo.Baskets",
                 c => new
@@ -14,7 +23,6 @@ namespace Web.Migrations
                         ItemId = c.Int(nullable: false, identity: true),
                         CustomerID = c.Int(nullable: false),
                         Quantity = c.Int(nullable: false),
-                        DateCreated = c.DateTime(nullable: false),
                         Products_ID = c.Int(),
                     })
                 .PrimaryKey(t => t.ItemId)
@@ -42,6 +50,7 @@ namespace Web.Migrations
                 c => new
                     {
                         ID = c.Int(nullable: false, identity: true),
+                        CustomerID = c.Int(nullable: false),
                         FirstName = c.String(nullable: false),
                         LastName = c.String(nullable: false),
                         EmailAddress = c.String(nullable: false),
@@ -54,6 +63,7 @@ namespace Web.Migrations
                 c => new
                     {
                         ID = c.Int(nullable: false, identity: true),
+                        CustomerID = c.Int(nullable: false),
                         City = c.String(nullable: false),
                         ZipCode = c.String(nullable: false),
                         Address = c.String(nullable: false),
@@ -65,16 +75,17 @@ namespace Web.Migrations
                 c => new
                     {
                         ID = c.Int(nullable: false, identity: true),
+                        DateCreated = c.DateTime(nullable: false),
                         Status = c.String(),
-                        Basket_ItemId = c.Int(),
+                        BasketList_ItemId = c.Int(),
                         CustomerDetails_ID = c.Int(),
                         DeliveryAddress_ID = c.Int(),
                     })
                 .PrimaryKey(t => t.ID)
-                .ForeignKey("dbo.Baskets", t => t.Basket_ItemId)
+                .ForeignKey("dbo.Baskets", t => t.BasketList_ItemId)
                 .ForeignKey("dbo.CustomerDetails", t => t.CustomerDetails_ID)
                 .ForeignKey("dbo.DeliveryAddresses", t => t.DeliveryAddress_ID)
-                .Index(t => t.Basket_ItemId)
+                .Index(t => t.BasketList_ItemId)
                 .Index(t => t.CustomerDetails_ID)
                 .Index(t => t.DeliveryAddress_ID);
             
@@ -96,12 +107,12 @@ namespace Web.Migrations
             DropForeignKey("dbo.PurchaseHistories", "OrderList_ID", "dbo.OrderLists");
             DropForeignKey("dbo.OrderLists", "DeliveryAddress_ID", "dbo.DeliveryAddresses");
             DropForeignKey("dbo.OrderLists", "CustomerDetails_ID", "dbo.CustomerDetails");
-            DropForeignKey("dbo.OrderLists", "Basket_ItemId", "dbo.Baskets");
+            DropForeignKey("dbo.OrderLists", "BasketList_ItemId", "dbo.Baskets");
             DropForeignKey("dbo.Baskets", "Products_ID", "dbo.Products");
             DropIndex("dbo.PurchaseHistories", new[] { "OrderList_ID" });
             DropIndex("dbo.OrderLists", new[] { "DeliveryAddress_ID" });
             DropIndex("dbo.OrderLists", new[] { "CustomerDetails_ID" });
-            DropIndex("dbo.OrderLists", new[] { "Basket_ItemId" });
+            DropIndex("dbo.OrderLists", new[] { "BasketList_ItemId" });
             DropIndex("dbo.Baskets", new[] { "Products_ID" });
             DropTable("dbo.PurchaseHistories");
             DropTable("dbo.OrderLists");
@@ -109,6 +120,7 @@ namespace Web.Migrations
             DropTable("dbo.CustomerDetails");
             DropTable("dbo.Products");
             DropTable("dbo.Baskets");
+            DropTable("dbo.Anonyms");
         }
     }
 }

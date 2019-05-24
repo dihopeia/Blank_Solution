@@ -1,5 +1,4 @@
 ﻿@model Web.Models.OrderList
-
 @{
     ViewBag.Title = "Details";
 }
@@ -11,6 +10,42 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
+            Details
+        </dt>
+        <dd>
+            Name: @Html.DisplayFor(model => model.CustomerDetails.FirstName)
+           @Html.DisplayFor(model => model.CustomerDetails.LastName)
+        </dd>
+        <dd>
+            Address: @Html.DisplayFor(model => model.DeliveryAddress.ZipCode)
+            @Html.DisplayFor(model => model.DeliveryAddress.City)
+            @Html.DisplayFor(model => model.DeliveryAddress.Address)
+        </dd>
+
+        <dd>
+            Email Address: @Html.DisplayFor(model => model.CustomerDetails.EmailAddress)
+        </dd>
+        <dd>
+            Phone Number: @Html.DisplayFor(model => model.CustomerDetails.PhoneNumber)
+        </dd>
+
+        <dt>
+            Customer ID
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerDetails.CustomerID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateCreated)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateCreated)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.Status)
         </dt>
 
@@ -18,6 +53,20 @@
             @Html.DisplayFor(model => model.Status)
         </dd>
 
+    </dl>
+    <dl>
+        <dt>
+            Purchased Item
+        </dt>
+
+        <dd>
+            Product: @Html.DisplayFor(model => model.BasketList.Products.Brand)
+            @Html.DisplayFor(model => model.BasketList.Products.Name)
+        </dd>
+
+        <dd>
+            Price: @Html.DisplayFor(model => model.BasketList.Products.Price)
+        </dd>
     </dl>
 </div>
 <p>

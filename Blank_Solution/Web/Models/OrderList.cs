@@ -10,15 +10,24 @@ namespace Web.Models
     {
         [Key]
         public int ID { get; set; }
-        public virtual Basket Basket { get; set; }
+        public virtual Basket BasketList { get; set; }
         public virtual CustomerDetails CustomerDetails { get; set; }
         public virtual DeliveryAddress DeliveryAddress { get; set; }
-        public System.DateTime DateCreated { get; set; }
+        public DateTime DateCreated { get; set; }
         public string Status { get; set; }
 
         public OrderList()
         {
 
+        }
+
+        public OrderList(Basket BasketList, CustomerDetails CustomerDetails, DeliveryAddress DeliveryAddress, DateTime DateCreated, string Status)
+        {
+            this.BasketList = BasketList;
+            this.CustomerDetails = CustomerDetails;
+            this.DeliveryAddress = DeliveryAddress;
+            this.DateCreated = DateCreated;
+            this.Status = Status;
         }
     } 
 }

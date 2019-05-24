@@ -18,7 +18,30 @@ namespace Web.Controllers
         // GET: DeliveryAddresses
         public ActionResult Index()
         {
-            return View(db.DeliveryAddress.ToList());
+            int getCustomerID = 0;
+            string sessionKey = HttpContext.Session.SessionID;
+            string CurrentUserIdentity = System.Web.HttpContext.Current.User.Identity.Name;
+
+            string isUsernNameExist = (from une in new ApplicationDbContext().Users
+                                       where une.UserName == CurrentUserIdentity
+                                       select une.UserName).SingleOrDefault();
+
+            if (CurrentUserIdentity == isUsernNameExist)
+            {
+                getCustomerID = (from x in db.Anonym
+                                 where x.SessionID == CurrentUserIdentity
+                                 select x.ID).FirstOrDefault();
+            }
+            else
+            {
+                getCustomerID = (from x in db.Anonym
+                                 where x.SessionID == sessionKey
+                                 select x.ID).FirstOrDefault();
+            }
+            var query = from x in db.DeliveryAddress
+                        where x.CustomerID == getCustomerID
+                        select x;
+            return View(query.ToList());
         }
 
         // GET: DeliveryAddresses/Details/5
@@ -50,7 +73,7 @@ namespace Web.Controllers
         public ActionResult Create([Bind(Include = "ID,CustomerID,City,ZipCode,Address")] DeliveryAddress deliveryAddress)
         {
             if (ModelState.IsValid)
-            {
+            {              
                 int getCustomerID = 0;
                 string sessionKey = HttpContext.Session.SessionID;
                 string CurrentUserIdentity = System.Web.HttpContext.Current.User.Identity.Name;
@@ -71,10 +94,23 @@ namespace Web.Controllers
                                      where x.SessionID == sessionKey
                                      select x.ID).FirstOrDefault();
                 }
-
                 deliveryAddress.CustomerID = getCustomerID;
+
                 db.DeliveryAddress.Add(deliveryAddress);
                 db.SaveChanges();
+                Basket CurrentCustomerBaskets = new Basket();
+                CustomerDetails getCurrentCD = (from c in db.CustomerDetail
+                                                where c.CustomerID == getCustomerID
+                                                select c).SingleOrDefault();
+                DeliveryAddress getCurrentDA = (from d in db.DeliveryAddress
+                                                where d.CustomerID == getCustomerID
+                                                select d).SingleOrDefault();
+
+                DateTime localDate = DateTime.Now;
+                OrderList CreateItem = new OrderList(CurrentCustomerBaskets, getCurrentCD, getCurrentDA, DateTime.Now, "Ordered");
+                db.OrderList.Add(CreateItem);
+                db.SaveChanges();
+
                 return RedirectToAction("Index", "OrderLists");
             }
 

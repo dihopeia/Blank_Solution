@@ -189,21 +189,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201905191505499_AddTables.cs" />
-    <Compile Include="Migrations\201905191505499_AddTables.Designer.cs">
-      <DependentUpon>201905191505499_AddTables.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905200745476_ModifyTables.cs" />
-    <Compile Include="Migrations\201905200745476_ModifyTables.Designer.cs">
-      <DependentUpon>201905200745476_ModifyTables.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905211307177_AnonymTable.cs" />
-    <Compile Include="Migrations\201905211307177_AnonymTable.Designer.cs">
-      <DependentUpon>201905211307177_AnonymTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905231539362_ModifyCustomerDetiailsAndDeliveryAdd.cs" />
-    <Compile Include="Migrations\201905231539362_ModifyCustomerDetiailsAndDeliveryAdd.Designer.cs">
-      <DependentUpon>201905231539362_ModifyCustomerDetiailsAndDeliveryAdd.cs</DependentUpon>
+    <Compile Include="Migrations\201905241706450_Everything.cs" />
+    <Compile Include="Migrations\201905241706450_Everything.Designer.cs">
+      <DependentUpon>201905241706450_Everything.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -221,7 +209,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="AdatBazisok\Tablak0523_1816.sql" />
+    <Content Include="AdatBazisok\Tablak0424.sql" />
     <Content Include="AdatBazisok\users.sql" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
@@ -307,11 +295,6 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\OrderLists\Create.cshtml" />
-    <Content Include="Views\OrderLists\Delete.cshtml" />
-    <Content Include="Views\OrderLists\Details.cshtml" />
-    <Content Include="Views\OrderLists\Edit.cshtml" />
-    <Content Include="Views\OrderLists\Index.cshtml" />
     <Content Include="Views\PurchaseHistories\Create.cshtml" />
     <Content Include="Views\PurchaseHistories\Delete.cshtml" />
     <Content Include="Views\PurchaseHistories\Details.cshtml" />
@@ -356,6 +339,11 @@
     <Content Include="Views\DeliveryAddresses\Details.cshtml" />
     <Content Include="Views\DeliveryAddresses\Edit.cshtml" />
     <Content Include="Views\DeliveryAddresses\Index.cshtml" />
+    <Content Include="Views\OrderLists\Create.cshtml" />
+    <Content Include="Views\OrderLists\Delete.cshtml" />
+    <Content Include="Views\OrderLists\Details.cshtml" />
+    <Content Include="Views\OrderLists\Edit.cshtml" />
+    <Content Include="Views\OrderLists\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -374,17 +362,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201905191505499_AddTables.resx">
-      <DependentUpon>201905191505499_AddTables.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905200745476_ModifyTables.resx">
-      <DependentUpon>201905200745476_ModifyTables.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905211307177_AnonymTable.resx">
-      <DependentUpon>201905211307177_AnonymTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905231539362_ModifyCustomerDetiailsAndDeliveryAdd.resx">
-      <DependentUpon>201905231539362_ModifyCustomerDetiailsAndDeliveryAdd.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201905241706450_Everything.resx">
+      <DependentUpon>201905241706450_Everything.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
