@@ -236,7 +236,7 @@ namespace Web.Controllers
             {
                 return HttpNotFound();
             }
-            //TODo: if benne van már a termék(SessionID && ProductID && OrderTime==null alapján) akkor Quantity++
+
             var query = (from a in db.Basket
                          where a.CustomerID == currentUser && a.Products.ID == product.ID
                          select a).FirstOrDefault();

@@ -305,12 +305,8 @@
     <Content Include="Views\Baskets\Details.cshtml" />
     <Content Include="Views\Baskets\Edit.cshtml" />
     <Content Include="Views\Baskets\Index.cshtml" />
-    <Content Include="Views\Products\Create.cshtml" />
-    <Content Include="Views\Products\Delete.cshtml" />
     <Content Include="Views\Products\Details.cshtml" />
-    <Content Include="Views\Products\Edit.cshtml" />
     <Content Include="Views\Products\Index.cshtml" />
-    <Content Include="Views\Products\AddToBasket.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\AdminProducts.cshtml" />
@@ -344,6 +340,10 @@
     <Content Include="Views\OrderLists\Details.cshtml" />
     <Content Include="Views\OrderLists\Edit.cshtml" />
     <Content Include="Views\OrderLists\Index.cshtml" />
+    <Content Include="Views\Admin\AdminCreate.cshtml" />
+    <Content Include="Views\Admin\AdminDelete.cshtml" />
+    <Content Include="Views\Admin\AdminEdit.cshtml" />
+    <Content Include="Views\Admin\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

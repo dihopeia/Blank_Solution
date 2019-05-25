@@ -53,8 +53,11 @@
             @Html.ActionLink("Delete", "Delete", new { id = item.ItemId })
         </td>
     </tr>
-    basketSum += item.Products.Price * item.Quantity;
+    if (item.Products != null)
+    {
+            basketSum += item.Products.Price * item.Quantity;
     }
+}
 
 </table>
 <div style="float:left">

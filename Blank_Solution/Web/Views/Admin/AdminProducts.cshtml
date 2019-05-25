@@ -1,11 +1,73 @@
-﻿@{
+﻿@model IEnumerable<Web.Models.Products>
+
+@{
     ViewBag.Title = "Admin - Products";
 }
 <h2 style="margin-top: 3%">Admin Products</h2>
-
 <p>
-    NA MIVAAAAAN!
+    @Html.ActionLink("Add New Product", "AdminCreate")
 </p>
-<ul>
-    <li>@Html.ActionLink("Back to Admin page", "Index", "Admin", new { area = "" }, new { @class = "nav-link" })</li>
-</ul>
+<table class="table">
+    <tr>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Brand)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Size)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Resolution)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ratio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Hz)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th></th>
+    </tr>
+
+    @if (Model != null)
+    {
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Brand)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Size)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Resolution)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ratio)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Hz)
+                </td>
+                <td>
+                    $@Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "AdminEdit", new { id = item.ID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                    @Html.ActionLink("Delete", "AdminDelete", new { id = item.ID }) |
+                </td>
+            </tr>
+        }
+    }
+</table>
+<div>@Html.ActionLink("Back to Admin page", "Index", "Admin", new { area = "" }, new { @class = "nav-link" })</div>

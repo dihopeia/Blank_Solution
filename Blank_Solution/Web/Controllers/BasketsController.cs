@@ -63,14 +63,31 @@ namespace Web.Controllers
         //Deleting Cart
        public ActionResult DeleteAll()
        {
+           int getCustomerID = 0;
            string sessionKey = HttpContext.Session.SessionID;
-           var getCustomerID = (from x in db.Anonym
-                                where x.SessionID == sessionKey
-                                select x.ID).FirstOrDefault();
+           string CurrentUserIdentity = System.Web.HttpContext.Current.User.Identity.Name;
 
-           var query = from x in db.Basket
+           string isUsernNameExist = (from une in new ApplicationDbContext().Users
+                                       where une.UserName == CurrentUserIdentity
+                                       select une.UserName).SingleOrDefault();
+
+            if (CurrentUserIdentity == isUsernNameExist)
+            {
+                getCustomerID = (from x in db.Anonym
+                                 where x.SessionID == CurrentUserIdentity
+                                 select x.ID).FirstOrDefault();
+            }
+            else
+            {
+                getCustomerID = (from x in db.Anonym
+                                 where x.SessionID == sessionKey
+                                 select x.ID).FirstOrDefault();
+            }
+
+            var query = from x in db.Basket
                        where x.CustomerID == getCustomerID
                        select x;
+
            var basketContent = query.ToList();
            for (int i = 0; i < basketContent.Count; i++)
            {

@@ -4,7 +4,7 @@
     ViewBag.Title = "Details";
 }
 
-<h2  style="margin-top: 3%">Details</h2>
+<h2 style="margin-top: 3%">Details</h2>
 
 <div>
     <hr />
@@ -65,8 +65,10 @@
         <dd>
             @Html.DisplayFor(model => model.Description)
         </dd>
+
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Edit", "AdminEdit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "AdminProducts")
 </p>
