@@ -136,7 +136,7 @@ namespace Web.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             OrderList orderList = db.OrderList.Find(id);
-            db.OrderList.Remove(orderList);
+            orderList.Status = "Deleted";
             db.SaveChanges();
             return RedirectToAction("Index");
         }
