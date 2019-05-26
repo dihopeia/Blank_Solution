@@ -56,17 +56,21 @@
     </dl>
     <dl>
         <dt>
-            Purchased Item
+            Purchased Items
         </dt>
 
-        <dd>
-            Product: @Html.DisplayFor(model => model.BasketList.Products.Brand)
-            @Html.DisplayFor(model => model.BasketList.Products.Name)
-        </dd>
-
-        <dd>
-            Price: @Html.DisplayFor(model => model.BasketList.Products.Price)
-        </dd>
+        @{
+            int fullPrice = 0;
+            for (int i = 0; i < Model.BasketList.Count; i++)
+            {
+        <dd>@Html.DisplayFor(model => model.BasketList[i].Products.Brand) @Html.DisplayFor(model => model.BasketList[i].Products.Name)</dd>
+                <dd>Price: @Html.DisplayFor(model => model.BasketList[i].Products.Price)</dd>
+                <dd>Quantity: @Html.DisplayFor(model => model.BasketList[i].Quantity)</dd>
+                fullPrice += Model.BasketList[i].Products.Price* Model.BasketList[i].Quantity;
+                <br>
+            }
+                <dd>Full Price: @fullPrice</dd>
+        }
     </dl>
 </div>
 <p>

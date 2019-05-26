@@ -24,10 +24,13 @@ namespace Web.Migrations
                         CustomerID = c.Int(nullable: false),
                         Quantity = c.Int(nullable: false),
                         Products_ID = c.Int(),
+                        OrderList_ID = c.Int(),
                     })
                 .PrimaryKey(t => t.ItemId)
                 .ForeignKey("dbo.Products", t => t.Products_ID)
-                .Index(t => t.Products_ID);
+                .ForeignKey("dbo.OrderLists", t => t.OrderList_ID)
+                .Index(t => t.Products_ID)
+                .Index(t => t.OrderList_ID);
             
             CreateTable(
                 "dbo.Products",
@@ -77,15 +80,12 @@ namespace Web.Migrations
                         ID = c.Int(nullable: false, identity: true),
                         DateCreated = c.DateTime(nullable: false),
                         Status = c.String(),
-                        BasketList_ItemId = c.Int(),
                         CustomerDetails_ID = c.Int(),
                         DeliveryAddress_ID = c.Int(),
                     })
                 .PrimaryKey(t => t.ID)
-                .ForeignKey("dbo.Baskets", t => t.BasketList_ItemId)
                 .ForeignKey("dbo.CustomerDetails", t => t.CustomerDetails_ID)
                 .ForeignKey("dbo.DeliveryAddresses", t => t.DeliveryAddress_ID)
-                .Index(t => t.BasketList_ItemId)
                 .Index(t => t.CustomerDetails_ID)
                 .Index(t => t.DeliveryAddress_ID);
             
@@ -107,12 +107,12 @@ namespace Web.Migrations
             DropForeignKey("dbo.PurchaseHistories", "OrderList_ID", "dbo.OrderLists");
             DropForeignKey("dbo.OrderLists", "DeliveryAddress_ID", "dbo.DeliveryAddresses");
             DropForeignKey("dbo.OrderLists", "CustomerDetails_ID", "dbo.CustomerDetails");
-            DropForeignKey("dbo.OrderLists", "BasketList_ItemId", "dbo.Baskets");
+            DropForeignKey("dbo.Baskets", "OrderList_ID", "dbo.OrderLists");
             DropForeignKey("dbo.Baskets", "Products_ID", "dbo.Products");
             DropIndex("dbo.PurchaseHistories", new[] { "OrderList_ID" });
             DropIndex("dbo.OrderLists", new[] { "DeliveryAddress_ID" });
             DropIndex("dbo.OrderLists", new[] { "CustomerDetails_ID" });
-            DropIndex("dbo.OrderLists", new[] { "BasketList_ItemId" });
+            DropIndex("dbo.Baskets", new[] { "OrderList_ID" });
             DropIndex("dbo.Baskets", new[] { "Products_ID" });
             DropTable("dbo.PurchaseHistories");
             DropTable("dbo.OrderLists");

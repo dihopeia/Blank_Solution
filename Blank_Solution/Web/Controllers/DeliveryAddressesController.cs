@@ -98,7 +98,16 @@ namespace Web.Controllers
 
                 db.DeliveryAddress.Add(deliveryAddress);
                 db.SaveChanges();
-                Basket CurrentCustomerBaskets = new Basket();
+                List<Basket> CurrentCustomerBaskets = new List<Basket>();
+                var getBaskets = from b in db.Basket
+                                 where b.CustomerID == getCustomerID
+                                 select b;
+
+                foreach (var item in getBaskets)
+                {
+                    CurrentCustomerBaskets.Add(item);
+                }
+
                 CustomerDetails getCurrentCD = (from c in db.CustomerDetail
                                                 where c.CustomerID == getCustomerID
                                                 select c).SingleOrDefault();

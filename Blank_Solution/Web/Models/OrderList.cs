@@ -10,7 +10,7 @@ namespace Web.Models
     {
         [Key]
         public int ID { get; set; }
-        public virtual Basket BasketList { get; set; }
+        public virtual List<Basket> BasketList { get; set; }
         public virtual CustomerDetails CustomerDetails { get; set; }
         public virtual DeliveryAddress DeliveryAddress { get; set; }
         public DateTime DateCreated { get; set; }
@@ -21,7 +21,7 @@ namespace Web.Models
 
         }
 
-        public OrderList(Basket BasketList, CustomerDetails CustomerDetails, DeliveryAddress DeliveryAddress, DateTime DateCreated, string Status)
+        public OrderList(List<Basket> BasketList, CustomerDetails CustomerDetails, DeliveryAddress DeliveryAddress, DateTime DateCreated, string Status)
         {
             this.BasketList = BasketList;
             this.CustomerDetails = CustomerDetails;
