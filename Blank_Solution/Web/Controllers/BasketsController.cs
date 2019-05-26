@@ -38,12 +38,15 @@ namespace Web.Controllers
                                      where x.SessionID == sessionKey
                                      select x.ID).FirstOrDefault();
             }
-
+            var help = from asd in db.Basket
+                       where asd.OrderList==null && asd.CustomerID == getCustomerID
+                       select asd;
             var query = from x in db.Basket
                         where x.CustomerID == getCustomerID
                         select x;
 
-            return View(query.ToList());
+
+            return View(help.ToList());
         }
 
         // GET: Baskets/Details/5

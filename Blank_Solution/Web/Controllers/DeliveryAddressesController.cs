@@ -100,7 +100,7 @@ namespace Web.Controllers
                 db.SaveChanges();
                 List<Basket> CurrentCustomerBaskets = new List<Basket>();
                 var getBaskets = from b in db.Basket
-                                 where b.CustomerID == getCustomerID
+                                 where b.CustomerID == getCustomerID && b.OrderList == null
                                  select b;
 
                 foreach (var item in getBaskets)
@@ -119,7 +119,6 @@ namespace Web.Controllers
                 OrderList CreateItem = new OrderList(CurrentCustomerBaskets, getCurrentCD, getCurrentDA, DateTime.Now, "Ordered");
                 db.OrderList.Add(CreateItem);
                 db.SaveChanges();
-
                 return RedirectToAction("Index", "OrderLists");
             }
 

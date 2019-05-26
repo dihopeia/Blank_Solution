@@ -16,6 +16,8 @@ namespace Web.Models
 
         public int Quantity { get; set; }
 
+        public virtual OrderList OrderList { get; set; }
+
         public virtual Products Products{ get; set; }
 
         public Basket()

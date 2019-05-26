@@ -97,7 +97,7 @@ namespace Web.Controllers
 
                 List<Basket> CurrentCustomerBaskets = new List<Basket>();
                 var getBaskets = from b in db.Basket
-                                 where b.CustomerID == getCustomerID
+                                 where b.CustomerID == getCustomerID && b.OrderList==null
                                  select b;
 
                 foreach (var item in getBaskets)

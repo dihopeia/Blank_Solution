@@ -238,12 +238,12 @@ namespace Web.Controllers
             }
 
             var query = (from a in db.Basket
-                         where a.CustomerID == currentUser && a.Products.ID == product.ID
+                         where a.CustomerID == currentUser && a.Products.ID == product.ID && a.OrderList == null
                          select a).FirstOrDefault();
 
             if (query != null)
             {
-                var result = db.Basket.SingleOrDefault(b => b.CustomerID == currentUser && b.Products.ID == product.ID);
+                var result = db.Basket.SingleOrDefault(b => b.CustomerID == currentUser && b.Products.ID == product.ID && b.OrderList == null);
             }
             else
             {

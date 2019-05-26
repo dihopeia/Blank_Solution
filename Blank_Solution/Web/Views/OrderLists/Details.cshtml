@@ -67,7 +67,7 @@
                 <dd>Price: @Html.DisplayFor(model => model.BasketList[i].Products.Price)</dd>
                 <dd>Quantity: @Html.DisplayFor(model => model.BasketList[i].Quantity)</dd>
                 fullPrice += Model.BasketList[i].Products.Price* Model.BasketList[i].Quantity;
-                <br>
+                <dd></dd>
             }
                 <dd>Full Price: @fullPrice</dd>
         }
