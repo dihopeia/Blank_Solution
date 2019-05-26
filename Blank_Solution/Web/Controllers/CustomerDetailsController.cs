@@ -18,6 +18,12 @@ namespace Web.Controllers
         // GET: CustomerDetails
         public ActionResult Index()
         {
+            return HttpNotFound();
+        }
+
+        // GET: CustomerDetails/Details/5
+        public ActionResult Details(int? id)
+        {
             int getCustomerID = 0;
             string sessionKey = HttpContext.Session.SessionID;
             string CurrentUserIdentity = System.Web.HttpContext.Current.User.Identity.Name;
@@ -38,25 +44,15 @@ namespace Web.Controllers
                                  where x.SessionID == sessionKey
                                  select x.ID).FirstOrDefault();
             }
-            var query = from x in db.CustomerDetail
-                        where x.CustomerID == getCustomerID
-                        select x;
-            return View(query.ToList());
-        }
-
-        // GET: CustomerDetails/Details/5
-        public ActionResult Details(int? id)
-        {
+            var query = from y in db.CustomerDetail
+                        where y.CustomerID == getCustomerID
+                        select y.ID;
+            id = query.FirstOrDefault();
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return RedirectToAction("Create", "CustomerDetails");
             }
-            CustomerDetails customerDetails = db.CustomerDetail.Find(id);
-            if (customerDetails == null)
-            {
-                return HttpNotFound();
-            }
-            return View(customerDetails);
+            return RedirectToAction("Edit", "CustomerDetails");
         }
 
         // GET: CustomerDetails/Create
@@ -84,11 +80,11 @@ namespace Web.Controllers
             }
 
             var GetAddress = (from validate in db.DeliveryAddress
-                         where validate.ID == getCustomerID
-                         select validate).SingleOrDefault();
+                              where validate.ID == getCustomerID
+                              select validate).SingleOrDefault();
             var GetDetails = (from validate in db.CustomerDetail
-                         where validate.CustomerID == getCustomerID
-                         select validate).SingleOrDefault();
+                              where validate.CustomerID == getCustomerID
+                              select validate).SingleOrDefault();
             if (GetAddress != null && GetAddress != null)
             {
                 var query = from valmi in db.Basket
@@ -97,7 +93,7 @@ namespace Web.Controllers
 
                 List<Basket> CurrentCustomerBaskets = new List<Basket>();
                 var getBaskets = from b in db.Basket
-                                 where b.CustomerID == getCustomerID && b.OrderList==null
+                                 where b.CustomerID == getCustomerID && b.OrderList == null
                                  select b;
 
                 foreach (var item in getBaskets)
@@ -106,11 +102,11 @@ namespace Web.Controllers
                 }
 
                 CustomerDetails CurrentCD = (from c in db.CustomerDetail
-                                                where c.CustomerID == getCustomerID
-                                                select c).SingleOrDefault();
+                                             where c.CustomerID == getCustomerID
+                                             select c).SingleOrDefault();
                 DeliveryAddress CurrentDA = (from d in db.DeliveryAddress
-                                                where d.CustomerID == getCustomerID
-                                                select d).SingleOrDefault();
+                                             where d.CustomerID == getCustomerID
+                                             select d).SingleOrDefault();
 
                 DateTime localDate = DateTime.Now;
                 OrderList CreateItem = new OrderList(CurrentCustomerBaskets, CurrentCD, CurrentDA, DateTime.Now, "Ordered");
@@ -171,16 +167,36 @@ namespace Web.Controllers
         // GET: CustomerDetails/Edit/5
         public ActionResult Edit(int? id)
         {
-            if (id == null)
+            int getCustomerID = 0;
+            string sessionKey = HttpContext.Session.SessionID;
+            string CurrentUserIdentity = System.Web.HttpContext.Current.User.Identity.Name;
+
+            string isUsernNameExist = (from une in new ApplicationDbContext().Users
+                                       where une.UserName == CurrentUserIdentity
+                                       select une.UserName).SingleOrDefault();
+
+            if (CurrentUserIdentity == isUsernNameExist)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                getCustomerID = (from x in db.Anonym
+                                 where x.SessionID == CurrentUserIdentity
+                                 select x.ID).FirstOrDefault();
             }
-            CustomerDetails customerDetails = db.CustomerDetail.Find(id);
-            if (customerDetails == null)
+            else
             {
-                return HttpNotFound();
+                getCustomerID = (from x in db.Anonym
+                                 where x.SessionID == sessionKey
+                                 select x.ID).FirstOrDefault();
             }
-            return View(customerDetails);
+            var query = from x in db.CustomerDetail
+                        where x.CustomerID == getCustomerID
+                        select x.ID;
+            id = query.FirstOrDefault();
+                CustomerDetails customerDetails = db.CustomerDetail.Find(id);
+                if (customerDetails == null)
+                {
+                    return RedirectToAction("Create", "CustomerDetails");
+                }
+                return View(customerDetails);
         }
 
         // POST: CustomerDetails/Edit/5

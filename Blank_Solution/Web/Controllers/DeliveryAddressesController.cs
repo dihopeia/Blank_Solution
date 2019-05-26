@@ -18,6 +18,12 @@ namespace Web.Controllers
         // GET: DeliveryAddresses
         public ActionResult Index()
         {
+            return HttpNotFound();
+        }
+
+        // GET: DeliveryAddresses/Details/5
+        public ActionResult Details(int? id)
+        {
             int getCustomerID = 0;
             string sessionKey = HttpContext.Session.SessionID;
             string CurrentUserIdentity = System.Web.HttpContext.Current.User.Identity.Name;
@@ -38,25 +44,14 @@ namespace Web.Controllers
                                  where x.SessionID == sessionKey
                                  select x.ID).FirstOrDefault();
             }
-            var query = from x in db.DeliveryAddress
-                        where x.CustomerID == getCustomerID
-                        select x;
-            return View(query.ToList());
-        }
-
-        // GET: DeliveryAddresses/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
+            var query = (from y in db.DeliveryAddress
+                        where y.CustomerID == getCustomerID
+                        select y.Address).FirstOrDefault();
+            if (query == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return RedirectToAction("Create", "DeliveryAddresses");
             }
-            DeliveryAddress deliveryAddress = db.DeliveryAddress.Find(id);
-            if (deliveryAddress == null)
-            {
-                return HttpNotFound();
-            }
-            return View(deliveryAddress);
+            return RedirectToAction("Edit", "DeliveryAddresses");
         }
 
         // GET: DeliveryAddresses/Create
@@ -73,7 +68,7 @@ namespace Web.Controllers
         public ActionResult Create([Bind(Include = "ID,CustomerID,City,ZipCode,Address")] DeliveryAddress deliveryAddress)
         {
             if (ModelState.IsValid)
-            {              
+            {
                 int getCustomerID = 0;
                 string sessionKey = HttpContext.Session.SessionID;
                 string CurrentUserIdentity = System.Web.HttpContext.Current.User.Identity.Name;
@@ -128,14 +123,34 @@ namespace Web.Controllers
         // GET: DeliveryAddresses/Edit/5
         public ActionResult Edit(int? id)
         {
-            if (id == null)
+            int getCustomerID = 0;
+            string sessionKey = HttpContext.Session.SessionID;
+            string CurrentUserIdentity = System.Web.HttpContext.Current.User.Identity.Name;
+
+            string isUsernNameExist = (from une in new ApplicationDbContext().Users
+                                       where une.UserName == CurrentUserIdentity
+                                       select une.UserName).SingleOrDefault();
+
+            if (CurrentUserIdentity == isUsernNameExist)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                getCustomerID = (from x in db.Anonym
+                                 where x.SessionID == CurrentUserIdentity
+                                 select x.ID).FirstOrDefault();
             }
+            else
+            {
+                getCustomerID = (from x in db.Anonym
+                                 where x.SessionID == sessionKey
+                                 select x.ID).FirstOrDefault();
+            }
+            var query = from x in db.DeliveryAddress
+                        where x.CustomerID == getCustomerID
+                        select x.ID;
+            id = query.FirstOrDefault();
             DeliveryAddress deliveryAddress = db.DeliveryAddress.Find(id);
             if (deliveryAddress == null)
             {
-                return HttpNotFound();
+                return RedirectToAction("Create", "DeliveryAddresses");
             }
             return View(deliveryAddress);
         }
