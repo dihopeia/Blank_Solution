@@ -18,7 +18,7 @@ namespace Web.Controllers
         // GET: Baskets
         public ActionResult Index()
         {
-            int getCustomerID=0;
+            int getCustomerID = 0;
             string sessionKey = HttpContext.Session.SessionID;
             string CurrentUserIdentity = System.Web.HttpContext.Current.User.Identity.Name;
 
@@ -35,11 +35,11 @@ namespace Web.Controllers
             else
             {
                 getCustomerID = (from x in db.Anonym
-                                     where x.SessionID == sessionKey
-                                     select x.ID).FirstOrDefault();
+                                 where x.SessionID == sessionKey
+                                 select x.ID).FirstOrDefault();
             }
             var help = from asd in db.Basket
-                       where asd.OrderList==null && asd.CustomerID == getCustomerID
+                       where asd.OrderList == null && asd.CustomerID == getCustomerID
                        select asd;
             var query = from x in db.Basket
                         where x.CustomerID == getCustomerID
@@ -64,13 +64,13 @@ namespace Web.Controllers
             return View(basket);
         }
         //Deleting Cart
-       public ActionResult DeleteAll()
-       {
-           int getCustomerID = 0;
-           string sessionKey = HttpContext.Session.SessionID;
-           string CurrentUserIdentity = System.Web.HttpContext.Current.User.Identity.Name;
+        public ActionResult DeleteAll()
+        {
+            int getCustomerID = 0;
+            string sessionKey = HttpContext.Session.SessionID;
+            string CurrentUserIdentity = System.Web.HttpContext.Current.User.Identity.Name;
 
-           string isUsernNameExist = (from une in new ApplicationDbContext().Users
+            string isUsernNameExist = (from une in new ApplicationDbContext().Users
                                        where une.UserName == CurrentUserIdentity
                                        select une.UserName).SingleOrDefault();
 
@@ -88,17 +88,17 @@ namespace Web.Controllers
             }
 
             var query = from x in db.Basket
-                       where x.CustomerID == getCustomerID
-                       select x;
+                        where x.CustomerID == getCustomerID
+                        select x;
 
-           var basketContent = query.ToList();
-           for (int i = 0; i < basketContent.Count; i++)
-           {
-               db.Basket.Remove(basketContent[i]);
-           }
-           db.SaveChanges();
-           return RedirectToAction("Index");
-       }
+            var basketContent = query.ToList();
+            for (int i = 0; i < basketContent.Count; i++)
+            {
+                db.Basket.Remove(basketContent[i]);
+            }
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
 
         //Quanitity plus minus
         public ActionResult ModifyQuantity(int? id, int deltaQuantity)
@@ -163,7 +163,36 @@ namespace Web.Controllers
 
         public ActionResult Buy()
         {
-            return RedirectToAction("Create","CustomerDetails");
+            int getCustomerID = 0;
+            string sessionKey = HttpContext.Session.SessionID;
+            string CurrentUserIdentity = System.Web.HttpContext.Current.User.Identity.Name;
+
+            string isUsernNameExist = (from une in new ApplicationDbContext().Users
+                                       where une.UserName == CurrentUserIdentity
+                                       select une.UserName).SingleOrDefault();
+
+            if (CurrentUserIdentity == isUsernNameExist)
+            {
+                getCustomerID = (from x in db.Anonym
+                                 where x.SessionID == CurrentUserIdentity
+                                 select x.ID).FirstOrDefault();
+            }
+            else
+            {
+                getCustomerID = (from x in db.Anonym
+                                 where x.SessionID == sessionKey
+                                 select x.ID).FirstOrDefault();
+            }
+
+            var getBaskets = from b in db.Basket
+                             where b.CustomerID == getCustomerID && b.OrderList == null
+                             select b.Products;
+
+            if (getBaskets.FirstOrDefault() == null)
+            {
+                return RedirectToAction("Index", "Products");
+            }
+            return RedirectToAction("Create", "CustomerDetails");
         }
     }
 }

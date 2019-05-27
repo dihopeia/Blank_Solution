@@ -78,41 +78,13 @@ namespace Web.Controllers
                                  where x.SessionID == sessionKey
                                  select x.ID).FirstOrDefault();
             }
+            var query = from y in db.CustomerDetail
+                        where y.CustomerID == getCustomerID
+                        select y.FirstName;
 
-            var GetAddress = (from validate in db.DeliveryAddress
-                              where validate.ID == getCustomerID
-                              select validate).SingleOrDefault();
-            var GetDetails = (from validate in db.CustomerDetail
-                              where validate.CustomerID == getCustomerID
-                              select validate).SingleOrDefault();
-            if (GetAddress != null && GetAddress != null)
+            if (query.FirstOrDefault()!=null)
             {
-                var query = from valmi in db.Basket
-                            where valmi.CustomerID == getCustomerID
-                            select valmi.ItemId;
-
-                List<Basket> CurrentCustomerBaskets = new List<Basket>();
-                var getBaskets = from b in db.Basket
-                                 where b.CustomerID == getCustomerID && b.OrderList == null
-                                 select b;
-
-                foreach (var item in getBaskets)
-                {
-                    CurrentCustomerBaskets.Add(item);
-                }
-
-                CustomerDetails CurrentCD = (from c in db.CustomerDetail
-                                             where c.CustomerID == getCustomerID
-                                             select c).SingleOrDefault();
-                DeliveryAddress CurrentDA = (from d in db.DeliveryAddress
-                                             where d.CustomerID == getCustomerID
-                                             select d).SingleOrDefault();
-
-                DateTime localDate = DateTime.Now;
-                OrderList CreateItem = new OrderList(CurrentCustomerBaskets, CurrentCD, CurrentDA, DateTime.Now, "Ordered");
-                db.OrderList.Add(CreateItem);
-                db.SaveChanges();
-                return RedirectToAction("Index", "OrderLists");
+                return RedirectToAction("Create", "DeliveryAddresses");
             }
             return View();
         }

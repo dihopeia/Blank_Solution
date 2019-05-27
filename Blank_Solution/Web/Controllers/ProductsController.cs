@@ -186,13 +186,9 @@ namespace Web.Controllers
 
         public ActionResult AddToBasket(int? id)
         {
-            int currentUser = 0;
+            int getCustomerID = 0;
             string sessionKey = HttpContext.Session.SessionID;
             string CurrentUserIdentity = System.Web.HttpContext.Current.User.Identity.Name;
-
-            string isSessionIdExist = (from x in db.Anonym
-                                       where x.SessionID == sessionKey
-                                       select x.SessionID).FirstOrDefault();
 
             string isUsernNameExist = (from une in new ApplicationDbContext().Users
                                        where une.UserName == CurrentUserIdentity
@@ -200,50 +196,35 @@ namespace Web.Controllers
 
             if (CurrentUserIdentity == isUsernNameExist)
             {
-                string isUserExist = (from x in db.Anonym
-                                      where x.SessionID == CurrentUserIdentity
-                                      select x.SessionID).FirstOrDefault();
-                if (isUserExist != CurrentUserIdentity)
-                {
-                    db.Anonym.Add(new Anonym(CurrentUserIdentity));
-                }
-                db.SaveChanges();
-
-                currentUser = (from x in db.Anonym
-                               where x.SessionID == CurrentUserIdentity
-                               select x.ID).FirstOrDefault();
+                getCustomerID = (from x in db.Anonym
+                                 where x.SessionID == CurrentUserIdentity
+                                 select x.ID).FirstOrDefault();
             }
             else
             {
-
-                if (isSessionIdExist != sessionKey)
-                {
-                    db.Anonym.Add(new Anonym(sessionKey));
-                }
-                db.SaveChanges();
-
-                currentUser = (from x in db.Anonym
-                               where x.SessionID == sessionKey
-                               select x.ID).FirstOrDefault();
+                getCustomerID = (from x in db.Anonym
+                                 where x.SessionID == sessionKey
+                                 select x.ID).FirstOrDefault();
             }
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Products product = db.Product.Find(id);
-            Basket entryToAddToBasket = new Basket(product.ID, currentUser, product);
+            Basket entryToAddToBasket = new Basket(product.ID, getCustomerID, product);
             if (product == null)
             {
                 return HttpNotFound();
             }
 
             var query = (from a in db.Basket
-                         where a.CustomerID == currentUser && a.Products.ID == product.ID && a.OrderList == null
+                         where a.CustomerID == getCustomerID && a.Products.ID == product.ID && a.OrderList == null
                          select a).FirstOrDefault();
 
             if (query != null)
             {
-                var result = db.Basket.SingleOrDefault(b => b.CustomerID == currentUser && b.Products.ID == product.ID && b.OrderList == null);
+                var result = db.Basket.SingleOrDefault(b => b.CustomerID == getCustomerID && b.Products.ID == product.ID && b.OrderList == null);
             }
             else
             {
