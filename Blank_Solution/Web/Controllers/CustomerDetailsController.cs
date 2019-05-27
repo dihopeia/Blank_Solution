@@ -120,9 +120,9 @@ namespace Web.Controllers
                 }
                 customerDetails.CustomerID = getCustomerID;
 
-                var query = (from a in db.DeliveryAddress
+                var query = (from a in db.CustomerDetail
                              where a.CustomerID == getCustomerID
-                             select a).FirstOrDefault();
+                             select a.FirstName).FirstOrDefault();
                 if (query != null)
                 {
                     return RedirectToAction("Create", "DeliveryAddresses");
@@ -130,7 +130,7 @@ namespace Web.Controllers
 
                 db.CustomerDetail.Add(customerDetails);
                 db.SaveChanges();
-                return RedirectToAction("Create", "DeliveryAddresses");
+                return RedirectToAction("Index", "Products");
             }
 
             return View(customerDetails);
