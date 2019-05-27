@@ -182,7 +182,7 @@ namespace Web.Controllers
             {
                 db.Entry(customerDetails).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Home");
             }
             return View(customerDetails);
         }

@@ -6,6 +6,18 @@
 
 <h2 style="margin-top: 3%">Products</h2>
 
+<div>
+    @Html.ActionLink("Acer", "Brand/Acer", "Products", new { area = "" }, new { @class = "nav-link" })
+    @Html.ActionLink("Asus", "Brand/Asus", "Products", new { area = "" }, new { @class = "nav-link" })
+    @Html.ActionLink("LG", "Brand/LG", "Products", new { area = "" }, new { @class = "nav-link" })
+    @Html.ActionLink("Benq", "Brand/Benq", "Products", new { area = "" }, new { @class = "nav-link" })
+    @Html.ActionLink("Dell", "Brand/Dell", "Products", new { area = "" }, new { @class = "nav-link" })
+    @Html.ActionLink("Samsung", "Brand/Samsung", "Products", new { area = "" }, new { @class = "nav-link" })
+    @Html.ActionLink("Philips", "Brand/Philips", "Products", new { area = "" }, new { @class = "nav-link" })
+</div>
+<div>
+
+</div>
 <table class="table">
     <tr>
        
@@ -17,15 +29,6 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Size)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Resolution)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Ratio)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Hz)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Price)
@@ -44,15 +47,6 @@
         
         <td>
             @Html.DisplayFor(modelItem => item.Size)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Resolution)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Ratio)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Hz)
         </td>
         <td>
             $@Html.DisplayFor(modelItem => item.Price) 

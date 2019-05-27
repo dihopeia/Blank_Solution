@@ -30,7 +30,7 @@ namespace Web.Models
         public string Size
         {
             get { return size; }
-            set { size = AddCol(value); }
+            set { size = value; }
         }
 
         public string Name
@@ -57,7 +57,7 @@ namespace Web.Models
         public string Hz
         {
             get { return hz; }
-            set { hz = AddHz(value); }
+            set { hz = value; }
         }        
 
         private string EkezetesMenetesites(string valami)
@@ -69,20 +69,6 @@ namespace Web.Models
                 sb.Replace(ekezetek[i].ToString(),"");          
             }
             return sb.ToString().ToUpper();
-        }
-
-        private string AddCol(string item)
-        {
-            item = item + " \"";
-            StringBuilder sb = new StringBuilder(item).Replace("\" \"","\"");
-            return sb.ToString();
-        }
-
-        private string AddHz(string item)
-        {
-            item = item + " Hz";
-            StringBuilder sb = new StringBuilder(item).Replace("Hz Hz", "Hz");
-            return sb.ToString();
         }
     }
 }
