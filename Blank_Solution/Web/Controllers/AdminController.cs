@@ -133,6 +133,68 @@ namespace Web.Controllers
             return RedirectToAction("AdminUsers");
         }*/
 
+        //GET: Products/AdminDelete/5
+        //[Authorize(Roles = "Admin")] Admin ellenőrzés
+        public ActionResult OrderDelivered(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            OrderList orderList = db.OrderList.Find(id);
+            if (orderList == null)
+            {
+                return HttpNotFound();
+            }
+            return View(orderList);
+        }
+
+        //POST: Admin/AdminOrders/5
+        [HttpPost, ActionName("OrderDelivered")]
+        [ValidateAntiForgeryToken]
+        public ActionResult OrderDeliveredConfirmed(int id)
+        {
+            OrderList orderList = db.OrderList.Find(id);
+            if (orderList.Status == "Deleted")
+            {
+                return RedirectToAction("AdminOrders");
+            }
+            orderList.Status = "Delivered";
+            db.SaveChanges();
+            return RedirectToAction("AdminOrders");
+        }
+
+        //GET: Products/AdminDelete/5
+        //[Authorize(Roles = "Admin")] Admin ellenőrzés
+        public ActionResult OrderDelete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            OrderList orderList = db.OrderList.Find(id);
+            if (orderList == null)
+            {
+                return HttpNotFound();
+            }
+            return View(orderList);
+        }
+        
+        //POST: Admin/AdminOrders/5
+        [HttpPost, ActionName("OrderDelete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult OrderDeleteConfirmed(int id)
+        {
+            OrderList orderList = db.OrderList.Find(id);
+            if (orderList.Status == "Delivered")
+            {
+                return RedirectToAction("AdminOrders");
+            }
+            orderList.Status = "Deleted";
+            db.SaveChanges();
+            return RedirectToAction("AdminOrders");
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

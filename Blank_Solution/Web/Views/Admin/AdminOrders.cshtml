@@ -44,6 +44,10 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Status)
                 </td>
+                <td>
+                    @Html.ActionLink("Delete Order", "OrderDelete", new { id = item.ID }) |
+                    @Html.ActionLink("Delivered", "OrderDelivered", new { id = item.ID })
+                </td>
             </tr>
         }
     }

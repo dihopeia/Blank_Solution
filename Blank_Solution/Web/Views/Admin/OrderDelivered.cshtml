@@ -1,0 +1,63 @@
+﻿@model Web.Models.OrderList
+
+@{
+    ViewBag.Title = "OrderDelivered";
+}
+
+<h2 style="margin-top: 3%">Order Status</h2>
+
+<h3>Modify the status of this order to "Delivered"?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerDetails)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerDetails)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DeliveryAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DeliveryAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateCreated)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateCreated)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delivered" class="btn btn-default" /> |
+            @Html.ActionLink("Back to product list", "AdminOrders")
+        </div>
+    }
+</div>
