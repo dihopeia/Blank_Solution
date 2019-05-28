@@ -50,8 +50,8 @@
                 $@Html.DisplayFor(modelItem => item.Price)
             </td>
             <td>
+                <button class="btn btn-default" onclick="location.href='@Url.Action("AddToBasket", new { id = item.ID })'"><i class="fas fa-cart-plus"></i></button>
                 <button class="btn btn-default" onclick="location.href='@Url.Action("Details", new { id = item.ID })'">Details</button>
-                <button class="btn btn-default" onclick="location.href='@Url.Action("AddToBasket", new { id = item.ID })'">Add to Cart</button>
             </td>
         </tr>
     }

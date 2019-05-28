@@ -43,7 +43,7 @@
         </td>
         <td>
             <button class="btn btn-default" onclick="location.href='@Url.Action("Details", new { id = item.ItemId })'">Details</button>
-            <button class="btn btn-default" onclick="location.href='@Url.Action("Delete", new { id = item.ItemId })'">Delete</button>
+            <button class="btn btn-default" onclick="location.href='@Url.Action("Delete", new { id = item.ItemId })'"><i class="fas fa-trash-alt"></i></button>
         </td>
     </tr>
     if (item.Products != null)
