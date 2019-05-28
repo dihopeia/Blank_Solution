@@ -1,11 +1,51 @@
-﻿@{
-    ViewBag.Title = "Admin - Orders";
-}
-<h2 style="margin-top: 3%">Admin Orders</h2>
+﻿@model IEnumerable<Web.Models.OrderList>
 
-<p>
-    NA MIVAAAAAN!
-</p>
-<ul>
-    <li>@Html.ActionLink("Back to Admin page", "Index", "Admin", new { area = "" }, new { @class = "nav-link" })</li>
-</ul>
+@{
+    ViewBag.Title = "AdminOrders";
+}
+<h2 style="margin-top: 3%">Orders</h2>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CustomerDetails)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DeliveryAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateCreated)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+    </tr>
+
+    @if (Model != null)
+    {
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ID)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.CustomerDetails)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DeliveryAddress)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateCreated)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+            </tr>
+        }
+    }
+</table>
+@Html.ActionLink("Back to Admin page", "Index", "Admin", new { area = "" }, new { @class = "nav-link" })

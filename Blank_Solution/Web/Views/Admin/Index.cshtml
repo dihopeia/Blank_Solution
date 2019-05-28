@@ -1,13 +1,127 @@
-﻿
+﻿@model IEnumerable<Web.Models.Products>
+
 @{
-    ViewBag.Title = "Admin";
+    ViewBag.Title = "Admin - Products";
 }
 
-<h2 style="margin-top: 3%">Admin</h2>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Admin - Products</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand navbar-dark bg-dark static-top" style="display:flex; justify-content: center">
+        <a class="navbar-brand" href="Index" >Admin Panel Dashboard</a>
+    </nav>
+    <div>
+        <!-- Sidebar -->
+        <div id="content-wrapper">
+            <div class="container-fluid">
+                <!-- Icon Cards-->
+                <div class="row">
+                    <div style="width:33.33%">
+                        <div class="card text-white bg-dark o-hidden h-100">
+                            <div class="card-body">
+                                <div class="mr-5">Number of Users: @ViewBag.CustomerDetail.Count</div>
+                            </div>
+                            <hr />
+                            <span style="text-align:center">@Html.ActionLink("View Users", "AdminUsers", "Admin", new { area = "" }, new { @class = "nav-link" })</span>
+                        </div>
+                    </div>
+                    <div style="width:33.33%">
+                        <div class="card text-white bg-warning o-hidden h-100">
+                            <div class="card-body">
+                                <div class="mr-5">Number of Products: @ViewBag.Products.Count</div>
+                            </div>
+                            <hr/>
+                            <span style="text-align:center">@Html.ActionLink("Edit Products", "AdminProducts", "Admin", new { area = "" }, new { @class = "nav-link" })</span>
+                        </div>
+                    </div>
+                    <div style="width:33.33%">
+                        <div class="card text-white bg-success o-hidden h-100">
+                            <div class="card-body">
+                                <div class="mr-5">Number of Orders: @ViewBag.OrderList.Count</div>
+                            </div>
+                            <hr />
+                            <span style="text-align:center">@Html.ActionLink("View Orders", "AdminOrders", "Admin", new { area = "" }, new { @class = "nav-link" })</span>
+                        </div>
+                    </div>
+                <!--
+                    <div style="width:25%">
+                    <div class="card text-white bg-danger o-hidden h-100">
+                        <div class="card-body">
+                            <div class="mr-5">Number of Messages: @ViewBag.CustomerDetail.Count</div>
+                        </div>
+                        <hr />
+                        <span style="text-align:center">@Html.ActionLink("View Messages", "Messages", "Admin", new { area = "" }, new { @class = "nav-link" })</span>
+                    </div>
+                -->
+                </div>
+                    </div>
+                </div>
+                <div class="card mb-3">
+                    <div class="card-header" style="text-align:center">
+                        Product List
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <tr>
+                                <th>
+                                        @Html.DisplayNameFor(model => model.Brand)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Name)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Size)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Resolution)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Ratio)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Hz)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Price)
+                                    </th>
+                                </tr>
 
-<ul>
-    <li>@Html.ActionLink("EditProducts", "AdminProducts", "Admin", new { area = "" }, new { @class = "nav-link" })</li>
-    <li>@Html.ActionLink("EditBaskets", "AdminBaskets", "Admin", new { area = "" }, new { @class = "nav-link" })</li>
-    <li>@Html.ActionLink("EditOrders", "AdminOrders", "Admin", new { area = "" }, new { @class = "nav-link" })</li>
-    <li>@Html.ActionLink("PurchaseHistory", "AdminHistory", "Admin", new { area = "" }, new { @class = "nav-link" })</li>
-</ul>
+                                @if (Model != null)
+                                {
+                                    foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Brand)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Name)
+                                            </td>
+
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Size)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Resolution)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Ratio)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Hz)
+                                            </td>
+                                            <td>
+                                                $@Html.DisplayFor(modelItem => item.Price)
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                        </table>
+                     </div>
+                </div>
+            </div>
+        </div>
+</body>

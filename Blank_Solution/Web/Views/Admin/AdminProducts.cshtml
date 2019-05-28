@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<Web.Models.Products>
 
 @{
-    ViewBag.Title = "Admin - Products";
+    ViewBag.Title = "AdminProducts";
 }
 <h2 style="margin-top: 3%">Admin Products</h2>
 <p>
@@ -9,7 +9,6 @@
 </p>
 <table class="table">
     <tr>
-
         <th>
             @Html.DisplayNameFor(model => model.Brand)
         </th>
@@ -47,7 +46,7 @@
                 </td>
 
                 <td>
-                    @Html.DisplayFor(modelItem => item.Size)"
+                    @Html.DisplayFor(modelItem => item.Size)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Resolution)
@@ -56,7 +55,7 @@
                     @Html.DisplayFor(modelItem => item.Ratio)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Hz) Hz
+                    @Html.DisplayFor(modelItem => item.Hz)
                 </td>
                 <td>
                     $@Html.DisplayFor(modelItem => item.Price)

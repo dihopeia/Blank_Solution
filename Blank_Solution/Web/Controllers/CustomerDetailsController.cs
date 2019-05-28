@@ -125,7 +125,7 @@ namespace Web.Controllers
                              select a.FirstName).FirstOrDefault();
                 if (query != null)
                 {
-                    return RedirectToAction("Create", "DeliveryAddresses");
+                    return RedirectToAction("Index", "Products");
                 }
 
                 db.CustomerDetail.Add(customerDetails);

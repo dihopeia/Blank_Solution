@@ -15,10 +15,14 @@ namespace Web.Controllers
     public class AdminController : Controller
     {
         private Entity_Data__Modell db = new Entity_Data__Modell();
+        private ApplicationDbContext data = new ApplicationDbContext();
         //[Authorize(Roles = "Admin")] Uncommenteld ki ha van admin felhasználód (nem enged használni ha nem vagy az)
         public ActionResult Index()
         {
-            return View();
+            ViewBag.Products = db.Product.ToList();
+            ViewBag.OrderList = db.OrderList.ToList();
+            ViewBag.CustomerDetail = db.CustomerDetail.ToList();
+            return View(db.Product.ToList());
         }
 
         // GET: Products/Edit/5
@@ -53,7 +57,7 @@ namespace Web.Controllers
             return View(products);
         }
 
-        // GET: Products/Delete/5
+        // GET: Products/AdminDelete/5
         //[Authorize(Roles = "Admin")] Admin ellenőrzés
         public ActionResult AdminDelete(int? id)
         {
@@ -69,7 +73,7 @@ namespace Web.Controllers
             return View(products);
         }
 
-        // POST: Products/Delete/5
+        // POST: Products/AdminDelete/5
         [HttpPost, ActionName("AdminDelete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
@@ -79,6 +83,55 @@ namespace Web.Controllers
             db.SaveChanges();
             return RedirectToAction("AdminProducts");
         }
+
+        // POST: Admin/AdminUsers/5
+        //[Authorize(Roles = "Admin")] Admin ellenőrzés
+        public ActionResult UserDelete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            int getCustomerID = 0;
+            string sessionKey = HttpContext.Session.SessionID;
+            string CurrentUserIdentity = System.Web.HttpContext.Current.User.Identity.Name;
+
+            string isUsernNameExist = (from une in data.Users
+                                       where une.UserName == CurrentUserIdentity
+                                       select une.UserName).SingleOrDefault();
+
+            if (CurrentUserIdentity == isUsernNameExist)
+            {
+                getCustomerID = (from x in db.Anonym
+                                 where x.SessionID == CurrentUserIdentity
+                                 select x.ID).FirstOrDefault();
+            }
+            else
+            {
+                getCustomerID = (from x in db.Anonym
+                                 where x.SessionID == sessionKey
+                                 select x.ID).FirstOrDefault();
+            }
+            var query = from x in data.Users
+                        join c in db.Anonym on x.Email equals c.SessionID
+                        where x.Email == c.SessionID
+                        select x;
+
+            data.Users.Remove(query.FirstOrDefault());
+            db.SaveChanges();
+            return RedirectToAction("AdminUsers");
+        }
+
+        /* POST: AdminUsers/UserDelete/5
+        [HttpPost, ActionName("UserDelete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult UserConfirmed(int id)
+        {
+            CustomerDetails customerDetails = db.CustomerDetail.Find(id);
+            db.CustomerDetail.Remove(customerDetails);
+            db.SaveChanges();
+            return RedirectToAction("AdminUsers");
+        }*/
 
         protected override void Dispose(bool disposing)
         {
@@ -130,31 +183,31 @@ namespace Web.Controllers
         public ActionResult AdminProducts()
         {
             ViewBag.Message = "AdminProducts";
-
+            ViewBag.Products = db.Product.ToList();
             return View(db.Product.ToList());
         }
 
         //[Authorize(Roles = "Admin")] Admin ellenőrzés
-        public ActionResult AdminBaskets()
+        public ActionResult AdminUsers()
         {
-            ViewBag.Message = "AdminBaskets";
-
-            return View();
+            ViewBag.Message = "AdminUsers";
+            ViewBag.CustomerDetail = db.CustomerDetail.ToList();
+            return View(db.CustomerDetail.ToList());
         }
 
         //[Authorize(Roles = "Admin")] Admin ellenőrzés
         public ActionResult AdminOrders()
         {
             ViewBag.Message = "AdminOrders";
-
-            return View();
+            ViewBag.OrderList = db.OrderList.ToList();
+            return View(db.OrderList.ToList());
         }
 
         //[Authorize(Roles = "Admin")] Admin ellenőrzés
-        public ActionResult AdminHistory()
+        public ActionResult Messages()
         {
-            ViewBag.Message = "AdminHistory";
-
+            ViewBag.Message = "Messages";
+            //ViewBag.Messages = db.CustomerDetail.ToList();
             return View();
         }
     }
