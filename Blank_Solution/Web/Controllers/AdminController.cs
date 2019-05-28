@@ -16,7 +16,7 @@ namespace Web.Controllers
     {
         private Entity_Data__Modell db = new Entity_Data__Modell();
         private ApplicationDbContext data = new ApplicationDbContext();
-        //[Authorize(Roles = "Admin")] Uncommenteld ki ha van admin felhasználód (nem enged használni ha nem vagy az)
+        [Authorize(Roles = "Admin")]
         public ActionResult Index()
         {
             ViewBag.Products = db.Product.ToList();
@@ -26,7 +26,7 @@ namespace Web.Controllers
         }
 
         // GET: Products/Edit/5
-        //[Authorize(Roles = "Admin")] Admin ellenőrzés
+        [Authorize(Roles = "Admin")]
         public ActionResult AdminEdit(int? id)
         {
             if (id == null)
@@ -58,7 +58,7 @@ namespace Web.Controllers
         }
 
         // GET: Products/AdminDelete/5
-        //[Authorize(Roles = "Admin")] Admin ellenőrzés
+        [Authorize(Roles = "Admin")]
         public ActionResult AdminDelete(int? id)
         {
             if (id == null)
@@ -85,7 +85,7 @@ namespace Web.Controllers
         }
 
         // POST: Admin/AdminUsers/5
-        //[Authorize(Roles = "Admin")] Admin ellenőrzés
+        [Authorize(Roles = "Admin")]
         public ActionResult UserDelete(int? id)
         {
             if (id == null)
@@ -134,7 +134,7 @@ namespace Web.Controllers
         }*/
 
         //GET: Products/AdminDelete/5
-        //[Authorize(Roles = "Admin")] Admin ellenőrzés
+        [Authorize(Roles = "Admin")]
         public ActionResult OrderDelivered(int? id)
         {
             if (id == null)
@@ -165,7 +165,7 @@ namespace Web.Controllers
         }
 
         //GET: Products/AdminDelete/5
-        //[Authorize(Roles = "Admin")] Admin ellenőrzés
+        [Authorize(Roles = "Admin")]
         public ActionResult OrderDelete(int? id)
         {
             if (id == null)
@@ -205,7 +205,7 @@ namespace Web.Controllers
         }
 
         // GET: Products/Create
-        //[Authorize(Roles = "Admin")] Admin ellenőrzés
+        [Authorize(Roles = "Admin")]
         public ActionResult AdminCreate()
         {
             return View();
@@ -241,7 +241,7 @@ namespace Web.Controllers
             return View(products);
         }
 
-        //[Authorize(Roles = "Admin")] Admin ellenőrzés
+        [Authorize(Roles = "Admin")]
         public ActionResult AdminProducts()
         {
             ViewBag.Message = "AdminProducts";
@@ -249,7 +249,7 @@ namespace Web.Controllers
             return View(db.Product.ToList());
         }
 
-        //[Authorize(Roles = "Admin")] Admin ellenőrzés
+        [Authorize(Roles = "Admin")]
         public ActionResult AdminUsers()
         {
             ViewBag.Message = "AdminUsers";
@@ -257,7 +257,7 @@ namespace Web.Controllers
             return View(db.CustomerDetail.ToList());
         }
 
-        //[Authorize(Roles = "Admin")] Admin ellenőrzés
+        [Authorize(Roles = "Admin")]
         public ActionResult AdminOrders()
         {
             ViewBag.Message = "AdminOrders";
@@ -265,7 +265,7 @@ namespace Web.Controllers
             return View(db.OrderList.ToList());
         }
 
-        //[Authorize(Roles = "Admin")] Admin ellenőrzés
+        [Authorize(Roles = "Admin")]
         public ActionResult Messages()
         {
             ViewBag.Message = "Messages";

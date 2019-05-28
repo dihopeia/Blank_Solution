@@ -127,10 +127,19 @@ namespace Web.Controllers
                 {
                     return RedirectToAction("Index", "Products");
                 }
-
+                var emptyBasket = from b in db.Basket
+                                  where b.CustomerID == getCustomerID && b.OrderList == null
+                                  select b.Products;
+                if(emptyBasket!=null)
+                {
+                    db.CustomerDetail.Add(customerDetails);
+                    db.SaveChanges();
+                    return RedirectToAction("Create", "DeliveryAddresses");
+                    //return RedirectToAction("Index", "Products");
+                }
                 db.CustomerDetail.Add(customerDetails);
                 db.SaveChanges();
-                return RedirectToAction("Index", "Products");
+                return RedirectToAction("Create", "DeliveryAddresses");
             }
 
             return View(customerDetails);

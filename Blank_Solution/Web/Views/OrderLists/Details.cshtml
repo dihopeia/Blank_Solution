@@ -14,7 +14,7 @@
         </dt>
         <dd>
             Name: @Html.DisplayFor(model => model.CustomerDetails.FirstName)
-           @Html.DisplayFor(model => model.CustomerDetails.LastName)
+            @Html.DisplayFor(model => model.CustomerDetails.LastName)
         </dd>
         <dd>
             Address: @Html.DisplayFor(model => model.DeliveryAddress.ZipCode)
@@ -27,6 +27,13 @@
         </dd>
         <dd>
             Phone Number: @Html.DisplayFor(model => model.CustomerDetails.PhoneNumber)
+        </dd>
+
+        <dt>
+            Customer ID
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CustomerDetails.CustomerID)
         </dd>
 
         <dt>
