@@ -82,12 +82,11 @@
     <div class="container body-content">
         @RenderBody()
         <hr />
-        
+        <footer>
+            <p>@DateTime.Now.Year - Blank Solution</p>
+        </footer>
     </div>
-    <p>@DateTime.Now.Year - Blank Solution</p>
-    @*<footer>
-        
-    </footer>*@
+
     @*@Scripts.Render("~/bundles/jquery")
         @Scripts.Render("~/bundles/bootstrap")*@
     <script src="./vendor/jquery/jquery.min.js"></script>
