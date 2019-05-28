@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<h2 style="margin-top: 3%">Index</h2>
+<h2 style="margin-top: 3%">OrderList</h2>
 
 <table class="table">
     <tr>
@@ -26,8 +26,9 @@
             @Html.DisplayFor(modelItem => item.Status)
         </td>
         <td>
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            <button class="btn btn-default" onclick="location.href='@Url.Action("Details", new { id = item.ID})'">Details</button>
+            <button class="btn btn-default" onclick="location.href='@Url.Action("Delete", new { id = item.ID})'">Delete</button>
+
         </td>
     </tr>
 }

@@ -88,7 +88,7 @@ namespace Web.Controllers
             }
 
             var query = from x in db.Basket
-                        where x.CustomerID == getCustomerID
+                        where x.CustomerID == getCustomerID && x.OrderList == null
                         select x;
 
             var basketContent = query.ToList();

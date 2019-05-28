@@ -48,9 +48,8 @@
             @Html.ActionLink("-", "ModifyQuantity", new { id = item.ItemId, deltaQuantity = -1 })
         </td>
         <td>
-
-            @Html.ActionLink("Details", "Details", new { id = item.ItemId }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.ItemId })
+            <button class="btn btn-default" onclick="location.href='@Url.Action("Details", new { id = item.ItemId })'">Details</button>
+            <button class="btn btn-default" onclick="location.href='@Url.Action("Delete", new { id = item.ItemId })'">Delete</button>
         </td>
     </tr>
     if (item.Products != null)
@@ -64,6 +63,6 @@
     Your Cart Price: $@basketSum
 </div>
 <div style="float:right">
-    @Html.ActionLink("Buy", "Buy")
-    @Html.ActionLink("Delete Cart", "DeleteAll")
+    <button class="btn btn-default" onclick="location.href='@Url.Action("Buy")'">Buy</button>
+    <button class="btn btn-default" onclick="location.href='@Url.Action("DeleteAll")'">Delete Cart</button>
 </div>

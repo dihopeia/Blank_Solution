@@ -180,6 +180,27 @@ namespace Web.Controllers
         {
             if (ModelState.IsValid)
             {
+                int getCustomerID = 0;
+                string sessionKey = HttpContext.Session.SessionID;
+                string CurrentUserIdentity = System.Web.HttpContext.Current.User.Identity.Name;
+
+                string isUsernNameExist = (from une in new ApplicationDbContext().Users
+                                           where une.UserName == CurrentUserIdentity
+                                           select une.UserName).SingleOrDefault();
+
+                if (CurrentUserIdentity == isUsernNameExist)
+                {
+                    getCustomerID = (from x in db.Anonym
+                                     where x.SessionID == CurrentUserIdentity
+                                     select x.ID).FirstOrDefault();
+                }
+                else
+                {
+                    getCustomerID = (from x in db.Anonym
+                                     where x.SessionID == sessionKey
+                                     select x.ID).FirstOrDefault();
+                }
+                customerDetails.CustomerID = getCustomerID;
                 db.Entry(customerDetails).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index", "Home");

@@ -28,14 +28,14 @@
         </dt>
 
         <dd>
-            $ @Html.DisplayFor(model => model.Price)
+            $@Html.DisplayFor(model => model.Price)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Size)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Size)
+            @Html.DisplayFor(model => model.Size)"
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Resolution)
@@ -68,5 +68,5 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Back to List", "Index")
+    <button class="btn btn-default" onclick="location.href='@Url.Action("Index")'">Back to List</button>
 </p>
