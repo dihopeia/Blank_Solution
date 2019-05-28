@@ -2,6 +2,14 @@
 
 @{
     ViewBag.Title = "Admin - Products";
+    int szam = ViewBag.Orderlist.Count;
+    for (int i = 0; i < szam; i++)
+    {
+        if (ViewBag.Orderlist[i].Status == "Deleted" || ViewBag.Orderlist[i].Status == "Delivered")
+        {
+            szam--;
+        }
+    }
 }
 
 <head>
@@ -40,7 +48,7 @@
                     <div style="width:33.33%">
                         <div class="card text-white bg-success o-hidden h-100">
                             <div class="card-body">
-                                <div class="mr-5">Number of Orders: @ViewBag.OrderList.Count</div>
+                                <div class="mr-5">Number of Orders: @szam</div>
                             </div>
                             <hr />
                             <span style="text-align:center">@Html.ActionLink("View Orders", "AdminOrders", "Admin", new { area = "" }, new { @class = "nav-link" })</span>
