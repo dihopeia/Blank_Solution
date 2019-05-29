@@ -33,7 +33,18 @@ namespace Web.Controllers
                                       select x.SessionID).FirstOrDefault();
                 if (isUserExist != CurrentUserIdentity)
                 {
-                    db.Anonym.Add(new Anonym(CurrentUserIdentity));
+                    var query = (from asd in db.Anonym
+                                 where asd.SessionID == sessionKey
+                                 select asd.ID).FirstOrDefault();
+                    if (query != null)
+                    {
+                        Anonym helper = db.Anonym.Find(query);
+                        helper.SessionID = CurrentUserIdentity;
+                    }
+                    else
+                    {
+                        db.Anonym.Add(new Anonym(CurrentUserIdentity));
+                    }
                 }
                 db.SaveChanges();
 
@@ -43,6 +54,7 @@ namespace Web.Controllers
             }
             else
             {
+
                 if (isSessionIdExist != sessionKey)
                 {
                     db.Anonym.Add(new Anonym(sessionKey));

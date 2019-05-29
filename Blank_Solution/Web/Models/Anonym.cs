@@ -17,5 +17,12 @@ namespace Web.Models
         {
             this.SessionID = SessionID;
         }
+
+        public Anonym()
+        {
+
+        }
     }
+
+    
 }
