@@ -1,4 +1,4 @@
-﻿    @model IEnumerable<Web.Models.Products>
+﻿@model IEnumerable<Web.Models.Products>
 
 @{
     ViewBag.Title = "Products";
@@ -17,7 +17,6 @@
 
 <table style="width:94%; display:inline-block; padding-left:18%;" class="table">
     <tr>
-
         <th>
             @Html.DisplayNameFor(model => model.Brand)
         </th>
@@ -32,28 +31,33 @@
         </th>
         <th></th>
     </tr>
-
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Brand)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-
-            <td>
-                @Html.DisplayFor(modelItem => item.Size)"
-            </td>
-            <td>
-                $@Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                <button class="btn btn-default" onclick="location.href='@Url.Action("AddToBasket", new { id = item.ID })'"><i class="fas fa-cart-plus"></i></button>
-                <button class="btn btn-default" onclick="location.href='@Url.Action("Details", new { id = item.ID })'">Details</button>
-            </td>
-        </tr>
-    }
+    @{ int asd = -1;
+            foreach (var item in Model)
+            {
+            asd++;
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Brand)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    <img src="@ViewBag.Image[asd].imgURL" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Size)"
+                </td>
+                <td>
+                        $@Html.DisplayFor(modelItem => item.Price)
+                    </td>
+    
+                    <td>
+    
+                        <button class="btn btn-default" onclick="location.href='@Url.Action("AddToBasket", new { id = item.ID })'"><i class="fas fa-cart-plus"></i></button>
+                    <button class="btn btn-default" onclick="location.href='@Url.Action("Details", new { id = item.ID })'">Details</button>
+                </td>
+            </tr>
+        } }
 
 </table>

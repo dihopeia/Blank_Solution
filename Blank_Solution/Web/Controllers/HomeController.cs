@@ -36,7 +36,7 @@ namespace Web.Controllers
                     var query = (from asd in db.Anonym
                                  where asd.SessionID == sessionKey
                                  select asd.ID).FirstOrDefault();
-                    if (query != null)
+                    if(query!=null)
                     {
                         Anonym helper = db.Anonym.Find(query);
                         helper.SessionID = CurrentUserIdentity;

@@ -19,6 +19,8 @@ namespace Web.Controllers
         // GET: Products
         public ActionResult Index()
         {
+            List<Images> mylist = db.Images.ToList();
+            ViewBag.Image = mylist;
             return View(db.Product.ToList());
         }
 
