@@ -1,17 +1,22 @@
 ﻿@model Web.Models.OrderList
 @{
-    ViewBag.Title = "Details";
+                /**/
+
+                ViewBag.Title = "Details";
 }
 
 <h2 style="margin-top: 3%">OrderList</h2>
 
-<div>
-    <h4>Details</h4>
+<div class="egymasmellett">
+    <h4>Order details</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
             Details
         </dt>
+        <dd>
+            Customer ID: @Html.DisplayFor(model => model.CustomerDetails.CustomerID)
+        </dd>
         <dd>
             Name: @Html.DisplayFor(model => model.CustomerDetails.FirstName)
             @Html.DisplayFor(model => model.CustomerDetails.LastName)
@@ -27,13 +32,6 @@
         </dd>
         <dd>
             Phone Number: @Html.DisplayFor(model => model.CustomerDetails.PhoneNumber)
-        </dd>
-
-        <dt>
-            Customer ID
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.CustomerDetails.CustomerID)
         </dd>
 
         <dt>
@@ -53,22 +51,23 @@
         </dd>
 
     </dl>
-    <dl>
-        <dt>
-            Purchased Items
-        </dt>
+</div>
 
+<div class="egymasmellett">
+    <h4>Purchased Items</h4>
+    <hr />
+    <dl>
         @{
             int fullPrice = 0;
             for (int i = 0; i < Model.BasketList.Count; i++)
             {
-        <dd>@Html.DisplayFor(model => model.BasketList[i].Products.Brand) @Html.DisplayFor(model => model.BasketList[i].Products.Name)</dd>
-                <dd>Price: @Html.DisplayFor(model => model.BasketList[i].Products.Price)</dd>
+                <dd>@Html.DisplayFor(model => model.BasketList[i].Products.Brand) @Html.DisplayFor(model => model.BasketList[i].Products.Name)</dd>
+                <dd>Price: $@Html.DisplayFor(model => model.BasketList[i].Products.Price)</dd>
                 <dd>Quantity: @Html.DisplayFor(model => model.BasketList[i].Quantity)</dd>
-                fullPrice += Model.BasketList[i].Products.Price* Model.BasketList[i].Quantity;
-                <dd></dd>
+                fullPrice += Model.BasketList[i].Products.Price * Model.BasketList[i].Quantity;
+                <dd><hr /></dd>
             }
-                <dd>Full Price: @fullPrice</dd>
+            <dd>Full Price: $@fullPrice</dd>
         }
     </dl>
 </div>
