@@ -271,3 +271,5 @@ C:\Users\Dihopeia\Source\Repos\Blank_Solution\Blank_Solution\Web\obj\Debug\Web.c
 C:\Users\Dihopeia\Source\Repos\Blank_Solution\Blank_Solution\Web\obj\Debug\Web.Migrations.Everything.resources
 C:\Users\Dihopeia\Source\Repos\Blank_Solution\Blank_Solution\Web\obj\Debug\Web.csproj.GenerateResource.cache
 C:\Users\Training\Source\Repos\Blank_Solution\Blank_Solution\Web\obj\Debug\Web.Migrations.Everything.resources
+C:\Users\Training\Source\Repos\Blank_Solution\Blank_Solution\Web\obj\Debug\Web.csprojAssemblyReference.cache
+C:\Users\Training\Source\Repos\Blank_Solution\Blank_Solution\Web\obj\Debug\Web.Migrations.AddImagesTable.resources

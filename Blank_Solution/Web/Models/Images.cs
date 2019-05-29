@@ -6,16 +6,17 @@ using System.Web;
 
 namespace Web.Models
 {
-    public class Anonym
+    public class Images
     {
         [Key]
         public int ID { get; set; }
+        public int productID { get; set; }
+        public string imgURL { get; set; }
 
-        public string SessionID { get; set; }
-
-        public Anonym(string SessionID)
+        public Images()
         {
-            this.SessionID = SessionID;
+            this.productID = productID;
+            this.imgURL = imgURL;
         }
     }
 }

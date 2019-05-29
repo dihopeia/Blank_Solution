@@ -38,6 +38,12 @@ namespace Web
             );
 
             routes.MapRoute(
+                name: "BySize",
+                url: "Products/Size/{size}",
+                defaults: new { controller = "Products", action = "Size" }
+            );
+
+            routes.MapRoute(
                 name: "ByRatio",
                 url: "Products/Ratio/{ratio}",
                 defaults: new { controller = "Products", action = "Ratio" }
