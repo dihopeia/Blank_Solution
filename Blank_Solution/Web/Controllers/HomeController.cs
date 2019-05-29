@@ -43,7 +43,6 @@ namespace Web.Controllers
             }
             else
             {
-
                 if (isSessionIdExist != sessionKey)
                 {
                     db.Anonym.Add(new Anonym(sessionKey));

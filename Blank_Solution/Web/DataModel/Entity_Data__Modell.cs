@@ -29,6 +29,7 @@ namespace Web.DataModel
         public virtual DbSet<PurchaseHistory> PurchaseHistory { get; set; }
         public virtual DbSet<OrderList> OrderList { get; set; }
         public virtual DbSet<Anonym> Anonym { get; set; }
+        public virtual DbSet<Images> Images { get; set; }
     }
 
     //public class MyEntity

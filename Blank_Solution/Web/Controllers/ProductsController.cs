@@ -30,6 +30,10 @@ namespace Web.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Products products = db.Product.Find(id);
+            string getImage = (from x in db.Images
+                              where x.productID == id
+                              select x.imgURL).FirstOrDefault();
+            ViewBag.KepUrl = getImage;
             if (products == null)
             {
                 return HttpNotFound();
