@@ -23,6 +23,7 @@
         <th>
             @Html.DisplayNameFor(model => model.Name)
         </th>
+        <th></th>
         <th>
             @Html.DisplayNameFor(model => model.Size)
         </th>
@@ -31,10 +32,10 @@
         </th>
         <th></th>
     </tr>
-    @{ int asd = -1;
+    @{ 
             foreach (var item in Model)
             {
-            asd++;
+            
             <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.Brand)
@@ -43,7 +44,7 @@
                     @Html.DisplayFor(modelItem => item.Name)
                 </td>
                 <td>
-                    <img src="@ViewBag.Image[asd].imgURL" />
+                    <img class="product-image", src="@ViewBag.Image[item.ID-3].imgURL" />
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Size)"

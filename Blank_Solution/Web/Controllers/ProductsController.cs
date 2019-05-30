@@ -27,6 +27,7 @@ namespace Web.Controllers
         // GET: Products/Details/5
         public ActionResult Details(int? id)
         {
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -46,6 +47,8 @@ namespace Web.Controllers
         //GET: Product/Name/byName
         public ActionResult Name(string name)
         {
+            List<Images> mylist = db.Images.ToList();
+            ViewBag.Image = mylist;
             IEnumerable<Products> query = null;
             query = db.Product.Where(p => p.Name == name).Select(x => x);
             return View("Index", query.ToList());
@@ -54,6 +57,8 @@ namespace Web.Controllers
         //GET: Product/Resolution/byName
         public ActionResult Resolution(string resolution)
         {
+            List<Images> mylist = db.Images.ToList();
+            ViewBag.Image = mylist;
             IEnumerable<Products> query = null;
             query = db.Product.Where(p => p.Resolution == resolution).Select(x => x);
             return View("Index", query.ToList());
@@ -62,6 +67,8 @@ namespace Web.Controllers
         //GET: Product/Ratio/Ratio
         public ActionResult Ratio(string ratio)
         {
+            List<Images> mylist = db.Images.ToList();
+            ViewBag.Image = mylist;
             IEnumerable<Products> query = null;
             query = db.Product.Where(p => p.Ratio == ratio).Select(x => x);
             return View("Index", query.ToList());
@@ -70,6 +77,8 @@ namespace Web.Controllers
         //GET: Product/Hz/byhz
         public ActionResult Hz(string hz)
         {
+            List<Images> mylist = db.Images.ToList();
+            ViewBag.Image = mylist;
             IEnumerable<Products> query = null;
             query = db.Product.Where(p => p.Hz == hz).Select(x => x);
             return View("Index", query.ToList());
@@ -78,6 +87,8 @@ namespace Web.Controllers
         //GET: Product/Size/size
         public ActionResult Size(string size)
         {
+            List<Images> mylist = db.Images.ToList();
+            ViewBag.Image = mylist;
             IEnumerable<Products> query = null;
             query = db.Product.Where(p => p.Size == size).Select(x => x);
             return View("Index", query.ToList());
@@ -85,6 +96,8 @@ namespace Web.Controllers
 
         public ActionResult Brand(string brand)
         {
+            List<Images> mylist = db.Images.ToList();
+            ViewBag.Image = mylist;
             IEnumerable<Products> query = null;
             query = db.Product.Where(p => p.Brand == brand).Select(x => x);
             return View("Index", query.ToList());
@@ -93,6 +106,8 @@ namespace Web.Controllers
         //GET: Product/Price/price
         public ActionResult Price(int price)
         {
+            List<Images> mylist = db.Images.ToList();
+            ViewBag.Image = mylist;
             IEnumerable<Products> query = null;
             query = db.Product.Where(p => p.Price == price).Select(x => x);
             return View("Index", query.ToList());

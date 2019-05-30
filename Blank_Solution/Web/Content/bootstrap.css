@@ -4,6 +4,14 @@
  * Copyright 2011-2019 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
+.details-image{
+    height:300px;
+    float: right;
+}
+
+.product-image{
+    height: 100px;
+}
 .egymasmellett {
     display: inline-block !important;
     margin-right: 50px;
