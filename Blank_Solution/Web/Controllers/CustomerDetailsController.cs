@@ -32,6 +32,8 @@ namespace Web.Controllers
                                        where une.UserName == CurrentUserIdentity
                                        select une.UserName).SingleOrDefault();
 
+            string isUserNameExist = new ApplicationDbContext().Users.Where(us => us.UserName == CurrentUserIdentity).Select(un => un.UserName).SingleOrDefault();
+
             if (CurrentUserIdentity == isUsernNameExist)
             {
                 getCustomerID = (from x in db.Anonym
